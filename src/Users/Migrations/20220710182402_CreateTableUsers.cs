@@ -19,20 +19,14 @@ namespace Users.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Email = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Password = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Role = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Name = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Email = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Password = table.Column<string>(type: "varchar(255)", nullable: false),
+                    Role = table.Column<string>(type: "varchar(255)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     Cpf = table.Column<int>(type: "varchar(11)", nullable: false),
-                    Rg = table.Column<string>(type: "varchar(10)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DispatchingAgency = table.Column<string>(type: "varchar(10)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Rg = table.Column<string>(type: "varchar(10)", nullable: true),
+                    DispatchingAgency = table.Column<string>(type: "varchar(10)", nullable: true),
                     IssueDate = table.Column<DateTime>(type: "date", nullable: true),
                     Apartment = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
