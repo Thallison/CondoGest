@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  mysql:
+    image: mysql:8.0.22
+    container_name: mysqldb
+
+  php:
+    build: .docker/php
+    container_name: "apache"
+    image: server-apache
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: "phpmyadmin"
