@@ -18,18 +18,13 @@ namespace User.Controllers
         private IMapper _mapper;
         private readonly AppSettings _appSettings;
 
-        public UsersController(
-            IUserService userService,
-            IMapper mapper,
-            IOptions<AppSettings> appSettings)
+        public UsersController(IUserService userService) 
         {
             _userService = userService;
-            _mapper = mapper;
-            _appSettings = appSettings.Value;
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
+        [HttpPost("login")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
             var response = _userService.Authenticate(model);
@@ -38,7 +33,7 @@ namespace User.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Register(RegisterRequest model)
+        public IActionResult Create(RegisterRequest model)
         {
             _userService.Register(model);
             return Ok(new { message = "Registration successful" });

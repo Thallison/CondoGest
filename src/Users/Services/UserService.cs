@@ -10,6 +10,7 @@ namespace User.Services
 {
     public class UserService : IUserService
     {
+        private const int _salt = 10; // 2 ^ (10) = 1024 iterations.
         private ApplicationDbContext _context;
         private IJwtUtils _jwtUtils;
         private readonly IMapper _mapper;
@@ -58,7 +59,7 @@ namespace User.Services
             var user = _mapper.Map<Entities.User>(model);
 
             // hash password
-            user.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
+            user.Password = hashGeneration(model.Password);
 
             // save user
             _context.Users.Add(user);
@@ -97,6 +98,14 @@ namespace User.Services
             var user = _context.Users.Find(id);
             if (user == null) throw new KeyNotFoundException("User not found");
             return user;
+        }
+
+        private static string hashGeneration(string password)
+        {
+            string salt = BCrypt.Net.BCrypt.GenerateSalt(_salt);
+            string hash = BCrypt.Net.BCrypt.HashPassword(password, salt);
+
+            return hash;
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Users.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Name", "Email", "Password", "Role", "Status", "Cpf", "Rg", "DispatchingAgency", "IssueDate", "Apartment", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 1L, "Admin", "teste@gmail.com", "123", "Administrador", 1, "12345", "123456789", "SSP", null, "102", new DateTime(2022, 5, 09, 12, 0, 0, 0, DateTimeKind.Local), null });
+                values: new object[] { 1L, "Admin", "teste@gmail.com", "123", "Administrador", 1, "$2a$11$ftwjY4dnLRC6Cyq/ejpZsOQFRHz3vhga056wu1a6Dxao5t8PIA.Su", "123456789", "SSP", null, "102", new DateTime(2022, 5, 09, 12, 0, 0, 0, DateTimeKind.Local), null });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
