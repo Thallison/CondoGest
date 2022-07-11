@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Condominiums.Controllers
 {
+
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
