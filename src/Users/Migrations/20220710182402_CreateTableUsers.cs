@@ -19,6 +19,7 @@ namespace Users.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CondominiumsId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "varchar(255)", nullable: false),
                     Email = table.Column<string>(type: "varchar(255)", nullable: false),
                     Password = table.Column<string>(type: "varchar(255)", nullable: false),
@@ -35,13 +36,56 @@ namespace Users.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Condominiums",
+                        column: x => x.CondominiumsId,
+                        principalTable: "Condominiums",
+                        principalColumn: "Id",
+                        onUpdate: ReferentialAction.Cascade,
+                        onDelete: ReferentialAction.Restrict);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateIndex(
+                name: "FK_Users_Condominiums_Idx",
+                table: "Users",
+                column: "CondominiumsId"
+            );
+
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Name", "Email", "Password", "Role", "Status", "Cpf", "Rg", "DispatchingAgency", "IssueDate", "Apartment", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 1L, "Admin", "teste@gmail.com", "123", "Administrador", 1, "$2a$11$ftwjY4dnLRC6Cyq/ejpZsOQFRHz3vhga056wu1a6Dxao5t8PIA.Su", "123456789", "SSP", null, "102", new DateTime(2022, 5, 09, 12, 0, 0, 0, DateTimeKind.Local), null });
+                columns: new[] { 
+                    "Id", 
+                    "CondominiumsId",
+                    "Name", 
+                    "Email", 
+                    "Password", 
+                    "Role", 
+                    "Status", 
+                    "Cpf", 
+                    "Rg", 
+                    "DispatchingAgency", 
+                    "IssueDate", 
+                    "Apartment", 
+                    "CreatedAt", 
+                    "UpdatedAt" 
+                },
+                values: new object[] { 
+                    1L,
+                    1,
+                    "Admin", 
+                    "teste@gmail.com", 
+                    "$2a$11$ftwjY4dnLRC6Cyq/ejpZsOQFRHz3vhga056wu1a6Dxao5t8PIA.Su", 
+                    "Administrador",
+                    1, 
+                    "12345678912",
+                    "123456", 
+                    "SSP", 
+                    null, 
+                    "102", 
+                    new DateTime(2022, 5, 09, 12, 0, 0, 0, DateTimeKind.Local), 
+                    null 
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
