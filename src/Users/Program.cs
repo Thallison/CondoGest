@@ -1,9 +1,9 @@
-using User.Helpers;
-using User.Services.Interfaces;
-using User.Services;
+using Users.Helpers;
+using Users.Services.Interfaces;
+using Users.Services;
 using System.Text.Json.Serialization;
-using User.Authorization;
-using User.Middlewares;
+using Users.Authorization;
+using Users.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;

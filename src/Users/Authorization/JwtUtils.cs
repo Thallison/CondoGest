@@ -3,9 +3,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using User.Helpers;
+using Users.Helpers;
 
-namespace User.Authorization
+namespace Users.Authorization
 {
     public interface IJwtUtils
     {
@@ -28,7 +28,7 @@ namespace User.Authorization
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
+                Subject = getClaim(user),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
@@ -66,6 +66,19 @@ namespace User.Authorization
                 // return null if validation fails
                 return null;
             }
+        }
+
+        private ClaimsIdentity getClaim (Entities.User user)
+        {
+            List<Claim> claims = new List<Claim>()
+            {
+                new Claim("id", user.Id.ToString()),
+                new Claim(ClaimTypes.Role, user.Role)
+            };
+
+            var identity = new ClaimsIdentity(claims);
+
+            return identity;
         }
     }
 }

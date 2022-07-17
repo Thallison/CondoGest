@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Microsoft.Extensions.Options;
-using User.Authorization;
-using User.Helpers;
-using User.Dtos.Users;
-using User.Services.Interfaces;
-using User.Dtos.Authenticate;
+using Users.Authorization;
+using Users.Helpers;
+using Users.Dtos.Users;
+using Users.Services.Interfaces;
+using Users.Dtos.Authenticate;
 
-namespace User.Controllers
+namespace Users.Controllers
 {
     [Authorize]
     [ApiController]
@@ -31,15 +31,13 @@ namespace User.Controllers
             return Ok(response);
         }
 
-        [AllowAnonymous]
         [HttpPost]
-        public IActionResult Create(RegisterRequest model)
+        public async Task<IActionResult> Create(RegisterRequest model)
         {
-            _userService.Register(model);
+            await _userService.Create(model);
             return Ok(new { message = "Registration successful" });
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -55,16 +53,16 @@ namespace User.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, UpdateRequest model)
+        public async Task<IActionResult> Update(int id, UpdateRequest model)
         {
-            _userService.Update(id, model);
+            await _userService.Update(id, model);
             return Ok(new { message = "User updated successfully" });
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _userService.Delete(id);
+            await _userService.Delete(id);
             return Ok(new { message = "User deleted successfully" });
         }
     }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace User.Helpers
+namespace Users.Helpers
 {
     public class ApplicationDbContext : DbContext
     {
@@ -17,6 +17,6 @@ namespace User.Helpers
             options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr));
         }
 
-        public DbSet<User.Entities.User> Users { get; set; }
+        public DbSet<Users.Entities.User> Users { get; set; }
     }
 }

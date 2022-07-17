@@ -1,6 +1,6 @@
-﻿using User.Entities;
+﻿using Users.Entities;
 
-namespace User.Services.Interfaces
+namespace Users.Services.Interfaces
 {
     public interface ITokenService
     {

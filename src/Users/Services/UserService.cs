@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using BCrypt.Net;
-using User.Authorization;
-using User.Dtos.Authenticate;
-using User.Dtos.Users;
-using User.Helpers;
-using User.Services.Interfaces;
+using Users.Authorization;
+using Users.Dtos.Authenticate;
+using Users.Dtos.Users;
+using Users.Helpers;
+using Users.Services.Interfaces;
 
-namespace User.Services
+namespace Users.Services
 {
     public class UserService : IUserService
     {
@@ -27,15 +26,17 @@ namespace User.Services
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _context.Users.SingleOrDefault(x => x.Email == model.Email);
+            var userFind = _context.Users.SingleOrDefault(x => x.Email == model.Email);
 
             // validate
-            if (user == null || !BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
+            if (userFind == null || !BCrypt.Net.BCrypt.Verify(model.Password, userFind.Password))
+            {
                 throw new AppException("Username or password is incorrect");
+            }
 
             // authentication successful
-            var response = _mapper.Map<AuthenticateResponse>(user);
-            response.Token = _jwtUtils.GenerateToken(user);
+            var response = _mapper.Map<AuthenticateResponse>(userFind);
+            response.Token = _jwtUtils.GenerateToken(userFind);
             return response;
         }
 
@@ -49,54 +50,60 @@ namespace User.Services
             return getUser(id);
         }
 
-        public void Register(RegisterRequest model)
+        public async Task Create(RegisterRequest model)
         {
             // validate
             if (_context.Users.Any(x => x.Email == model.Email))
+            {
                 throw new AppException("Email '" + model.Email + "' is already taken");
+            }
 
             // map model to new user object
-            var user = _mapper.Map<Entities.User>(model);
+            var newUser = _mapper.Map<Entities.User>(model);
 
             // hash password
-            user.Password = hashGeneration(model.Password);
+            newUser.Password = hashGeneration(model.Password);
+            newUser.CreatedAt = DateTime.Now;
 
             // save user
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            _context.Users.Add(newUser);
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(int id, UpdateRequest model)
+        public async Task Update(int id, UpdateRequest model)
         {
-            var user = getUser(id);
+            var UpdateUser = getUser(id);
 
             // validate
-            if (model.Email != user.Email && _context.Users.Any(x => x.Email == model.Email))
-                throw new AppException("Email '" + model.Email + "' is already taken");
+            /*if (model.Email != UpdateUser.Email && _context.Users.Any(x => x.Email == model.Email))
+                throw new AppException("Email '" + model.Email + "' is already taken");*/
 
             // hash password if it was entered
             if (!string.IsNullOrEmpty(model.Password))
-                user.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
+            {
+                UpdateUser.Password = hashGeneration(model.Password);
+            }
 
             // copy model to user and save
-            _mapper.Map(model, user);
-            _context.Users.Update(user);
-            _context.SaveChanges();
+            _mapper.Map(model, UpdateUser);
+            _context.Users.Update(UpdateUser);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             var user = getUser(id);
             _context.Users.Remove(user);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
-
-        // helper methods
 
         private Entities.User getUser(int id)
         {
             var user = _context.Users.Find(id);
-            if (user == null) throw new KeyNotFoundException("User not found");
+            if (user == null)
+            {
+                throw new KeyNotFoundException("User not found");
+            }
             return user;
         }
 
@@ -104,7 +111,6 @@ namespace User.Services
         {
             string salt = BCrypt.Net.BCrypt.GenerateSalt(_salt);
             string hash = BCrypt.Net.BCrypt.HashPassword(password, salt);
-
             return hash;
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace User.Dtos.Authenticate
+﻿namespace Users.Dtos.Authenticate
 {
     public class AuthenticateResponse
     {

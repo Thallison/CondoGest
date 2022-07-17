@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace User.Helpers
+namespace Users.Helpers
 {
     public class AppException: Exception
     {

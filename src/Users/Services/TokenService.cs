@@ -3,10 +3,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using User.Entities;
-using User.Services.Interfaces;
+using Users.Entities;
+using Users.Services.Interfaces;
 
-namespace User.Services
+namespace Users.Services
 {
     public class TokenService : ITokenService
     {

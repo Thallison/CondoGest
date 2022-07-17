@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace User.Authorization
+namespace Users.Authorization
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 

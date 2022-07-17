@@ -1,7 +1,7 @@
-﻿using User.Authorization;
-using User.Services.Interfaces;
+﻿using Users.Authorization;
+using Users.Services.Interfaces;
 
-namespace User.Middlewares
+namespace Users.Middlewares
 {
     public class JwtMiddleware
     {

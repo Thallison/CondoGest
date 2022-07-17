@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using System.Text.Json;
-using User.Helpers;
+using Users.Helpers;
 
-namespace User.Middlewares
+namespace Users.Middlewares
 {
     public class ErrorHandlerMiddleware
     {

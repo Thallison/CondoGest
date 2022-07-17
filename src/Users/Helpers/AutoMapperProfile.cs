@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using User.Entities;
-using User.Dtos.Users;
-using User.Dtos.Authenticate;
+using Users.Entities;
+using Users.Dtos.Users;
+using Users.Dtos.Authenticate;
 
-namespace User.Helpers
+namespace Users.Helpers
 {
     public class AutoMapperProfile : Profile
     {
