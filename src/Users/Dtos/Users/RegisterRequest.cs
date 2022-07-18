@@ -9,6 +9,7 @@ namespace Users.Dtos.Users
         public string Name { get; set; }
 
         [Required]
+        [EmailAddress(ErrorMessage = "Email in invalid format.")]
         public string Email { get; set; }
 
         [Required]

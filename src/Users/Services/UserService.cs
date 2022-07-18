@@ -84,6 +84,8 @@ namespace Users.Services
                 UpdateUser.Password = hashGeneration(model.Password);
             }
 
+            UpdateUser.UpdatedAt = DateTime.Now;
+
             // copy model to user and save
             _mapper.Map(model, UpdateUser);
             _context.Users.Update(UpdateUser);

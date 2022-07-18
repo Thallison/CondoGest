@@ -1,18 +1,37 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Condominiums.Middlewares;
 using Condominiums.Helpers;
+using Condominiums.Services.Interfaces;
+using Condominiums.Services;
+using System.Text.Json.Serialization;
+using Condominiums.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
+
 // Add services to the container.
+services.AddDbContext<ApplicationDbContext>();
+
+services.AddControllers();
 
 services.AddCors();
-services.AddControllers();
+
+services.AddControllers().AddJsonOptions(x =>
+{
+    // serialize enums as strings in api responses (e.g. Role)
+    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+
+    // ignore omitted parameters on models to enable optional params (e.g. User update)
+    x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+});
+
+services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
 services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
+services.AddScoped<ICondominiumService, CondominiumService>();
 
 var app = builder.Build();
 

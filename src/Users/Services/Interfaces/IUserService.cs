@@ -1,10 +1,5 @@
-﻿using AutoMapper;
-using BCrypt.Net;
-using Users.Authorization;
-using Users.Dtos.Authenticate;
+﻿using Users.Dtos.Authenticate;
 using Users.Dtos.Users;
-using Users.Entities;
-using Users.Helpers;
 
 namespace Users.Services.Interfaces
 {

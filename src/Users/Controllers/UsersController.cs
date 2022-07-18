@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using AutoMapper;
-using Microsoft.Extensions.Options;
 using Users.Authorization;
-using Users.Helpers;
 using Users.Dtos.Users;
 using Users.Services.Interfaces;
 using Users.Dtos.Authenticate;
@@ -12,11 +9,9 @@ namespace Users.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : Controller
+    public class UsersController : ControllerBase
     {
         private IUserService _userService;
-        private IMapper _mapper;
-        private readonly AppSettings _appSettings;
 
         public UsersController(IUserService userService) 
         {
