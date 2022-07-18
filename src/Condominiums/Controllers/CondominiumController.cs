@@ -46,5 +46,12 @@ namespace Condominiums.Controllers
             var user = _condominiumService.GetById(id);
             return Ok(user);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _condominiumService.Delete(id);
+            return Ok(new { message = "Condominium deleted successfully" });
+        }
     }
 }
