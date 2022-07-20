@@ -13,3 +13,23 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: "phpmyadmin"
+
+  user:
+    image: ${DOCKER_REGISTRY-}users
+    container_name: users
+    build:
+      context: .
+      dockerfile: src/Users/Dockerfile
+
+  condominium:
+    image: ${DOCKER_REGISTRY-}condominiums
+    container_name: condominiums
+    build:
+      context: .
+      dockerfile: src/Condominiums/Dockerfile
+  account:
+    image: ${DOCKER_REGISTRY-}accounts
+    container_name: accounts
+    build:
+      context: .
+      dockerfile: src/Accounts/Dockerfile

@@ -6,10 +6,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Condominiums.csproj", "."]
-RUN dotnet restore "./Condominiums.csproj"
+COPY ["src/Condominiums/Condominiums.csproj", "Condominiums/"]
+RUN dotnet restore "Condominiums/Condominiums.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/src/Condominiums"
 RUN dotnet build "Condominiums.csproj" -c Release -o /app/build
 
 FROM build AS publish
