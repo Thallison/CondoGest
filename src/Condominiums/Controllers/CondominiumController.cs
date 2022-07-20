@@ -36,15 +36,15 @@ namespace Condominiums.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var users = _condominiumService.GetAll();
-            return Ok(users);
+            var account = _condominiumService.GetAll();
+            return Ok(account);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var user = _condominiumService.GetById(id);
-            return Ok(user);
+            var account = _condominiumService.GetById(id);
+            return Ok(account);
         }
 
         [HttpDelete("{id}")]
