@@ -1,0 +1,61 @@
+.login-page {
+  background-size: cover;
+}
+
+.card,
+.login-card-body {
+  border-radius: 20px;
+}
+
+.login-card-body .input-group .form-control, 
+.register-card-body .input-group .form-control,
+.login-card-body .input-group .input-group-text, 
+.register-card-body .input-group .input-group-text {
+  border: 0;
+  border-bottom: 2px solid #3F3F3F !important;
+  border-radius: 0;
+}
+
+.btn-request {
+  background-color: #00345C;
+  color: #FFF;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.btn-request:hover {
+  background-color: #00B0DC;
+  color: #FFF;
+}
+
+.link-clean {
+  color: #3F3F3F;
+  font-weight: 500;
+}
+
+.link-clean:hover {
+  color: #3F3F3F;
+}
+
+.filter-text {
+  width: 100%;
+  margin-bottom: 5px;
+  text-align: center;
+  height: calc(1.8125rem + 2px);
+  padding: .25rem .5rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  border-radius: .2rem;
+  font-weight: 400;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  box-shadow: inset 0 0 0 transparent;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.rdt_TableCol .rdt_TableCol_Sortable div {
+  font-weight: 600 !important;
+  font-size: 1.1em !important;
+}
