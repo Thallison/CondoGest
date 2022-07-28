@@ -42,7 +42,8 @@ export class Dashboard extends Component {
     }
 
     render() {
-        const dashboard = 'dashboard' in this.props.list ? this.props.list.dashboard : []
+        
+        const dashboard = this.props.list?.dashboard ? this.props.list.dashboard : [];
 
         const data = {
             labels: dashboard.map(e => e.mes_ano),
@@ -163,7 +164,7 @@ export class Dashboard extends Component {
                             <h4 className='mb-4'>Vistorias atrasadas</h4>
                                 <DataTable
                                     columns={this.getColumns()}
-                                    data={this.props.list.recurrence}
+                                    data={this.props.list?.recurrence}
                                     pagination
                                     noHeader
                                     className="table table-bordered table-striped"

@@ -20,7 +20,7 @@ class SignIn extends Component {
     } else {
       try {
         var responseAuth = await api
-          .post("/sessions", { email, password })
+          .post("/users/login", { email, password })
           .then((resp) => resp)
           .catch((resp) => {
             if (typeof resp.response !== "undefined") {
@@ -29,7 +29,7 @@ class SignIn extends Component {
             throw new Error("Houve um problema na conexão com o servidor");
           });
         login(responseAuth.data);
-        var response = await api.get("/sessions");
+        var response = await api.get(`/users/${responseAuth.data.id}`);
         setPermissions(response.data);
         this.props.history.push("/app");
         this.props.history.go(0);

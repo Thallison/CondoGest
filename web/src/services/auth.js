@@ -1,9 +1,9 @@
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
-export const TOKEN_KEY = "@cippa-Token";
-export const USER_NAME = "@cippa-UserName";
-export const PERMISSIONS_KEY = "@cippa-permissions";
+export const TOKEN_KEY = "@condogest-Token";
+export const USER_NAME = "@condogest-UserName";
+export const PERMISSIONS_KEY = "@condogest-permissions";
 export const isAuthenticated = () => {
   return typeof cookies.get(TOKEN_KEY) !== 'undefined';
 }
@@ -18,7 +18,7 @@ export const logout = () => {
 };
 export const setPermissions = data => {
   cookies.set(USER_NAME, data.name, { path: '/' });
-  cookies.set(PERMISSIONS_KEY, data.permissions, { path: '/' });
+  cookies.set(PERMISSIONS_KEY, data.role, { path: '/' });
 }
 export const userGetPermission = () => cookies.get(PERMISSIONS_KEY);
 export const getName = () => cookies.get(USER_NAME);

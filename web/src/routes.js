@@ -41,9 +41,9 @@ const PrivateRoute = ({ component: Component, permission, ...rest }) => (
       }
 
       let permissions = userGetPermission();
-      permissions = typeof permissions !== "undefined" ? permissions : [];
+      permissions = permissions !== "undefined" ? permissions : [];
 
-      if (permission && !permissions.includes(permission)) {
+      if (permission && !permission.includes(permissions)) {
         return (
           <Redirect
             to={{ pathname: "/app", state: { from: props.location } }}
@@ -81,19 +81,19 @@ const Routes = () => (
       <PrivateRoute
         exact
         path="/app/usuarios"
-        permission={"users"}
+        permission={"Administrador"}
         component={() => <Users />}
       />
       <PrivateRoute
         exact
         path="/app/usuarios/add"
-        permission={"user_create"}
+        permission={"Administrador"}
         component={() => <UserRegister type="create" />}
       />
       <PrivateRoute
         exact
         path="/app/usuarios/edit/:id"
-        permission={"user_edit"}
+        permission={"Administrador"}
         component={() => <UserRegister type="edit" />}
       />
       <PrivateRoute
