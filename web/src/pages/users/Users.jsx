@@ -44,8 +44,8 @@ export class Users extends Component {
                 sortable: true,
             },
             {
-                name: 'Registro Profissional',
-                selector: 'professionalRegistry',
+                name: 'Permissão',
+                selector: 'role',
                 sortable: true,
             },
             {
@@ -71,51 +71,65 @@ export class Users extends Component {
                 align: "left",
                 sortable: false,
                 cell: record => {
+                    console.log(record.status)
                     return (
-                        <Fragment>
-                            <Authorization permission='user_view'>
-                                <button
-                                    className="btn btn-info btn-sm"
-                                    title="Visualizar"
-                                    onClick={() => this.props.history.push(`/app/usuarios/view/${record.id}`)}
-                                >
-                                    <i className="fa fa-eye"></i>
-                                </button>
-                            </Authorization>
-                            <Authorization permission='user_edit'>
-                                <button
-                                    className="btn btn-warning btn-sm"
-                                    title="Editar"
-                                    onClick={() => this.props.history.push(`/app/usuarios/edit/${record.id}`)}
-                                >
-                                    <i className="fa fa-pen"></i>
-                                </button>
-                            </Authorization>
-                            { record.status !== 'Inativo' ?
-                                <Authorization permission='user_delete'>
-                                    <button
-                                        className="btn btn-danger btn-sm"
-                                        title="Excluir"
-                                        onClick={() =>
-                                            this.setShowModalDelete(true, record.id)
-                                        }>
-                                        <i className="fa fa-trash-alt"></i>
-                                    </button>
-                                </Authorization>
-                                : null
+                      <Fragment>
+                        <Authorization permission={['Administrador']}>
+                          <button
+                            className="btn btn-info btn-sm"
+                            title="Visualizar"
+                            onClick={() =>
+                              this.props.history.push(
+                                `/app/usuarios/view/${record.id}`
+                              )
                             }
-                            { record.status !== 'Ativo' ?
-                                <Authorization permission='user_delete'>
-                                    <button
-                                        className="btn btn-success btn-sm"
-                                        title="Ativar"
-                                        onClick={() => this.props.update({...record, status: "Ativo"})}>
-                                        <i className="fa fa-check"></i>
-                                    </button>
-                                </Authorization>
-                                : null
+                          >
+                            <i className="fa fa-eye"></i>
+                          </button>
+                        </Authorization>
+                        <Authorization permission={['Administrador']}>
+                          <button
+                            className="btn btn-warning btn-sm"
+                            title="Editar"
+                            onClick={() =>
+                              this.props.history.push(
+                                `/app/usuarios/edit/${record.id}`
+                              )
                             }
-                        </Fragment>
+                          >
+                            <i className="fa fa-pen"></i>
+                          </button>
+                        </Authorization>
+                        {record.status !== "Inactive" ? (
+                          <Authorization permission={['Administrador']}>
+                            <button
+                              className="btn btn-danger btn-sm"
+                              title="Excluir"
+                              onClick={() =>
+                                this.setShowModalDelete(true, record.id)
+                              }
+                            >
+                              <i className="fa fa-trash-alt"></i>
+                            </button>
+                          </Authorization>
+                        ) : null}
+                        {record.status !== "Active" ? (
+                          <Authorization permission={['Administrador']}>
+                            <button
+                              className="btn btn-success btn-sm"
+                              title="Ativar"
+                              onClick={() =>
+                                this.props.update({
+                                  ...record,
+                                  status: 0
+                                })
+                              }
+                            >
+                              <i className="fa fa-check"></i>
+                            </button>
+                          </Authorization>
+                        ) : null}
+                      </Fragment>
                     );
                 }
             }

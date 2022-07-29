@@ -2,7 +2,7 @@ import api from '../../../services/api'
 import { toastr } from 'react-redux-toastr'
 import { initialize } from 'redux-form'
 
-export function  getList() {
+export function getList() {
     const request = api.get("roles")
     return {
         type: 'ROLE_FETCHED',

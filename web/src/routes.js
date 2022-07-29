@@ -81,25 +81,25 @@ const Routes = () => (
       <PrivateRoute
         exact
         path="/app/usuarios"
-        permission={"Administrador"}
+        permission={["Administrador"]}
         component={() => <Users />}
       />
       <PrivateRoute
         exact
         path="/app/usuarios/add"
-        permission={"Administrador"}
+        permission={["Administrador"]}
         component={() => <UserRegister type="create" />}
       />
       <PrivateRoute
         exact
         path="/app/usuarios/edit/:id"
-        permission={"Administrador"}
+        permission={["Administrador"]}
         component={() => <UserRegister type="edit" />}
       />
       <PrivateRoute
         exact
         path="/app/usuarios/view/:id"
-        permission={"user_view"}
+        permission={["Administrador"]}
         component={() => <UserRegister type="view" />}
       />
       <PrivateRoute
@@ -111,119 +111,119 @@ const Routes = () => (
       <PrivateRoute
         exact
         path="/app/normas"
-        permission={"standards"}
+        permission={["Administrador"]}
         component={() => <Standards />}
       />
       <PrivateRoute
         exact
         path="/app/normas/add"
-        permission={"standard_create"}
+        permission={["Administrador"]}
         component={() => <StandardRegister type="create" />}
       />
       <PrivateRoute
         exact
         path="/app/normas/edit/:id"
-        permission={"standard_edit"}
+        permission={["Administrador"]}
         component={() => <StandardRegister type="edit" />}
       />
       <PrivateRoute
         exact
         path="/app/normas/view/:id"
-        permission={"standard_view"}
+        permission={["Administrador"]}
         component={() => <StandardRegister type="view" />}
       />
 
       <PrivateRoute
         exact
         path="/app/empresas"
-        permission={"companies"}
+        permission={["Administrador"]}
         component={() => <Companies />}
       />
       <PrivateRoute
         exact
         path="/app/empresas/add"
-        permission={"company_create"}
+        permission={["Administrador"]}
         component={() => <CompanyRegister type="create" />}
       />
       <PrivateRoute
         exact
         path="/app/empresas/edit/:id"
-        permission={"company_edit"}
+        permission={["Administrador"]}
         component={() => <CompanyRegister type="edit" />}
       />
       <PrivateRoute
         exact
         path="/app/empresas/view/:id"
-        permission={"company_view"}
+        permission={["Administrador"]}
         component={() => <CompanyRegister type="view" />}
       />
       <PrivateRoute
         exact
         path="/app/setores"
-        permission={"sectors"}
+        permission={["Administrador"]}
         component={() => <Sectors />}
       />
       <PrivateRoute
         exact
         path="/app/normas_setor/:id"
-        permission={"sectors"}
+        permission={["Administrador"]}
         component={() => <SectorStandardRegister />}
       />
 
       <PrivateRoute
         exact
         path="/app/permissoes"
-        permission={"permission"}
+        permission={["Administrador"]}
         component={() => <Permissions />}
       />
       <PrivateRoute
         exact
         path="/app/permissoes_perfil/:id"
-        permission={"permission"}
+        permission={["Administrador"]}
         component={() => <RolePermissionsRegister />}
       />
 
       <PrivateRoute
         exact
         path="/app/vistorias"
-        permission={"inspections"}
+        permission={["Administrador"]}
         component={() => <Inspections />}
       />
       <PrivateRoute
         exact
         path="/app/vistorias/add"
-        permission={"inspection_create"}
+        permission={["Administrador"]}
         component={() => <InspectionRegister type="create" />}
       />
       <PrivateRoute
         exact
         path="/app/vistorias/edit/:id"
-        permission={"inspection_edit"}
+        permission={["Administrador"]}
         component={() => <InspectionRegister type="edit" />}
       />
       <PrivateRoute
         exact
         path="/app/vistorias/view/:id"
-        permission={"inspection_view"}
+        permission={["Administrador"]}
         component={() => <InspectionView />}
       />
       <PrivateRoute
         exact
         path="/app/vistorias/add/files/:id"
-        permission={"inspection_edit"}
+        permission={["Administrador"]}
         component={() => <InspectionFiles />}
       />
       <PrivateRoute
         exact
         path="/app/vistorias/detalhes/:id"
-        permission={"inspection_view"}
+        permission={["Administrador"]}
         component={() => <InspectionDetails />}
       />
 
       <PrivateRoute
         exact
         path="/app/relatorios/ultimas_vistorias"
-        permission={"inspections"}
+        permission={["Administrador"]}
         component={() => <LastInspections />}
       />
 
