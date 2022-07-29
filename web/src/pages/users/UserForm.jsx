@@ -28,7 +28,7 @@ export class UserForm extends Component {
         ''
         : 
         <div className="box-footer">
-            <button type='submit' className="btn btn-success">{this.props.labelButton}</button>
+            <button type='submit' className="btn btn-primary">{this.props.labelButton}</button>
         </div>
 
         return (

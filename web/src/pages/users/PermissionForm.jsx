@@ -22,7 +22,7 @@ export class PermissionForm extends Component {
                                     />
                         <div className="modal-footer justify-content-between">
                             <button type="button" className="btn btn-default" data-dismiss="modal">Fechar</button>
-                            <button type='submit' className="btn btn-success" onClick={()=> window.$('#modal-perfil').modal('hide')} >{this.props.labelButton}</button>
+                            <button type='submit' className="btn btn-primary" onClick={()=> window.$('#modal-perfil').modal('hide')} >{this.props.labelButton}</button>
                         </div>
                     </form>
         )

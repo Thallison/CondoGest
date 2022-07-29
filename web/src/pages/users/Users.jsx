@@ -116,7 +116,7 @@ export class Users extends Component {
                         {record.status !== "Active" ? (
                           <Authorization permission={['Administrador']}>
                             <button
-                              className="btn btn-success btn-sm"
+                              className="btn btn-primary btn-sm"
                               title="Ativar"
                               onClick={() =>
                                 this.props.update({
