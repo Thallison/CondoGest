@@ -52,7 +52,7 @@ export class UserForm extends Component {
                                 <Field 
                                     name='cpf' 
                                     component={LabelAndInput} type='text'
-                                    label='CPF:' cols='12 4' placeholder='Informe o cpf'
+                                    label='CPF:' cols='12 3' placeholder='Informe o cpf'
                                     required={true}
                                     disabled={this.props.disabled}
                                     normalize={(input) => {
@@ -69,7 +69,21 @@ export class UserForm extends Component {
                                 <Field 
                                     name={"status"}
                                     component={LabelAndInput} type='text'
-                                    label='Status:' cols='12 4' placeholder='Informe o status'
+                                    label='Status:' cols='12 3' placeholder='Informe o status'
+                                    disabled={this.props.disabled}
+                                    />
+                                <Field 
+                                    name='role' 
+                                    component={LabelAndInput}
+                                    label='Permissão:' cols='12 3'
+                                    placeholder='Informe a permissão' 
+                                    disabled={this.props.disabled}
+                                    />
+                                <Field 
+                                    name='apartment' 
+                                    component={LabelAndInput}
+                                    label='Apartamento:' cols='12 3'
+                                    placeholder='Informe o apartament' 
                                     disabled={this.props.disabled}
                                     />
                                 <Field 
@@ -88,13 +102,6 @@ export class UserForm extends Component {
                                     name='issueDate' 
                                     component={LabelAndInput} type='date'
                                     label='Data de Emissão:' cols='12 4' placeholder='Informe o data de emissão'
-                                    disabled={this.props.disabled}
-                                    />
-                                <Field 
-                                    name='role' 
-                                    component={LabelAndInput}
-                                    label='Permissão:' cols='12 4'
-                                    placeholder='Informe a permissão' 
                                     disabled={this.props.disabled}
                                     />
                             </div>
