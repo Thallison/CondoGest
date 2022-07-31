@@ -12,7 +12,6 @@ namespace Bff.Dtos.Users
         [EmailAddress(ErrorMessage = "Email in invalid format.")]
         public string Email { get; set; }
 
-        [Required]
         public string? Password { get; set; }
         
         [Required]
