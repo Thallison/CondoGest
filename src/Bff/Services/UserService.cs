@@ -62,5 +62,23 @@ namespace Bff.Services
                 return null;
             }
         }
+
+        public async Task<string>Create(string token, RegisterRequest data)
+        {
+            var encodeToken = token.Split(" ");
+            
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(encodeToken.FirstOrDefault(), encodeToken.LastOrDefault());
+            
+            using (var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json"))
+            using (var httpResponse = await _client.PostAsync($"Users", content))
+            {
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                    return responseStr;
+                }
+                return null;
+            }
+        }
     }
 }

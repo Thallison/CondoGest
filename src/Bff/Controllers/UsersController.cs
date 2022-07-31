@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Bff.Dtos.Authenticate;
+using Bff.Dtos.Users;
 using Bff.Authorization;
 using Bff.Services.Interfaces;
 using Newtonsoft.Json;
@@ -43,6 +44,14 @@ namespace Bff.Controllers
             var token = this.HttpContext.Request.Headers["Authorization"].ToString();
             var users = await _userService.GetById(token, id);
             return Ok(users);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(RegisterRequest model)
+        {
+            var token = this.HttpContext.Request.Headers["Authorization"].ToString();
+            var response = await _userService.Create(token, model);
+            return Ok(response);
         }
     }
 }
