@@ -36,7 +36,6 @@ namespace Bff.Services
             
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(encodeToken.FirstOrDefault(), encodeToken.LastOrDefault());
 
-            //using (var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json"))
             using (var httpResponse = await _client.GetAsync($"Users"))
             {
                 if (httpResponse.IsSuccessStatusCode)
@@ -53,7 +52,6 @@ namespace Bff.Services
             
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(encodeToken.FirstOrDefault(), encodeToken.LastOrDefault());
 
-            //using (var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json"))
             using (var httpResponse = await _client.GetAsync($"Users/{id}"))
             {
                 if (httpResponse.IsSuccessStatusCode)
