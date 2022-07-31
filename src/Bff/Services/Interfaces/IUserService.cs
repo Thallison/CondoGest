@@ -9,5 +9,6 @@ namespace Bff.Services.Interfaces
         Task<List<UsersResponse>>GetAll(string token);
         Task<UsersResponse>GetById(string token, int id);
         Task<string>Create(string token, RegisterRequest data);
+        Task<string>Update(string token, int id, UpdateRequest data);
     }
 }

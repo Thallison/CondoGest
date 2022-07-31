@@ -53,5 +53,13 @@ namespace Bff.Controllers
             var response = await _userService.Create(token, model);
             return Ok(response);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, UpdateRequest model)
+        {
+            var token = this.HttpContext.Request.Headers["Authorization"].ToString();
+            var response = await _userService.Update(token, id, model);
+            return Ok(response);
+        }
     }
 }
