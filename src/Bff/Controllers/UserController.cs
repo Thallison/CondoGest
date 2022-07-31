@@ -9,20 +9,20 @@ namespace Bff.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class AuthController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly ILogger<AuthController> _logger;
+        private readonly ILogger<UserController> _logger;
 
         private IUserService _userService;
 
-        public AuthController(ILogger<AuthController> logger, IUserService userService)
+        public UserController(ILogger<UserController> logger, IUserService userService)
         {
             _logger = logger;
             _userService = userService;
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("auth")]
         public async Task<IActionResult> Auth(LoginRequest model)
         {
             //var token = this.HttpContext.Request.Headers["Authorization"].ToString();
