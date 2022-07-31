@@ -1,9 +1,12 @@
 using Bff.Dtos.Authenticate;
+using Bff.Dtos.Users;
 
 namespace Bff.Services.Interfaces
 {
     public interface IUserService
     {
         Task<LoginResponse>Login(LoginRequest data);
+        Task<List<UsersResponse>>GetAll(string token);
+        Task<UsersResponse>GetById(string token, int id);
     }
 }

@@ -1,5 +1,6 @@
 using Bff.Services.Interfaces;
 using Bff.Dtos.Authenticate;
+using Bff.Dtos.Users;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -27,22 +28,41 @@ namespace Bff.Services
                 }
                 return null;
             }
-            /*string baseURL = "http://localhost:49160/";
-            string url = baseURL + "Users/login";
+        }
 
-            using (HttpClient client = new HttpClient())
+        public async Task<List<UsersResponse>>GetAll(string token)
+        {
+            var encodeToken = token.Split(" ");
+            
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(encodeToken.FirstOrDefault(), encodeToken.LastOrDefault());
+
+            //using (var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json"))
+            using (var httpResponse = await _client.GetAsync($"Users"))
             {
-                using (HttpResponseMessage responseMessage = await client.GetAsync(url))
+                if (httpResponse.IsSuccessStatusCode)
                 {
-                    using (HttpContent content = responseMessage.Content)
-                    {
-                        string data = await content.ReadAsStringAsync();
-                        return JsonConvert.DeserializeObject<List<LoginResponse>>(data);
-                    }
+                    var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<UsersResponse>>(responseStr);
                 }
+                return null;
             }
-            */
-            return new LoginResponse();
+        }
+        public async Task<UsersResponse>GetById(string token, int id)
+        {
+            var encodeToken = token.Split(" ");
+            
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(encodeToken.FirstOrDefault(), encodeToken.LastOrDefault());
+
+            //using (var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json"))
+            using (var httpResponse = await _client.GetAsync($"Users/{id}"))
+            {
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    var responseStr = await httpResponse.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<UsersResponse>(responseStr);
+                }
+                return null;
+            }
         }
     }
 }

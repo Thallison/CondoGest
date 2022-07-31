@@ -34,6 +34,8 @@ services.AddControllers().AddJsonOptions(x =>
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
+services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
 var app = builder.Build();
 
 {

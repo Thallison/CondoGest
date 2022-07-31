@@ -25,10 +25,24 @@ namespace Bff.Controllers
         [HttpPost("auth")]
         public async Task<IActionResult> Auth(LoginRequest model)
         {
-            //var token = this.HttpContext.Request.Headers["Authorization"].ToString();
-            var result = await _userService.Login(model);
-            
+            var result = await _userService.Login(model);   
             return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var token = this.HttpContext.Request.Headers["Authorization"].ToString();
+            var users = await _userService.GetAll(token);
+            return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var token = this.HttpContext.Request.Headers["Authorization"].ToString();
+            var users = await _userService.GetById(token, id);
+            return Ok(users);
         }
     }
 }
