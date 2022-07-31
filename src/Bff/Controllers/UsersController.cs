@@ -49,6 +49,7 @@ namespace Bff.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RegisterRequest model)
         {
+            model.Password = model.Cpf;
             var token = this.HttpContext.Request.Headers["Authorization"].ToString();
             var response = await _userService.Create(token, model);
             return Ok(response);
