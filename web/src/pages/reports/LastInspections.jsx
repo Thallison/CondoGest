@@ -58,7 +58,7 @@ export class Inspection extends Component {
                     />
                 </div>
                 <button
-                    className="btn btn-success float-right mb-4"
+                    className="btn btn-primary float-right mb-4"
                     type="submit">
                     <i className="fas fa-filter"></i> Filtrar
                 </button>

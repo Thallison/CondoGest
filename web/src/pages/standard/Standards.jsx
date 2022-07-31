@@ -67,7 +67,7 @@ export class Standards extends Component {
                 cell: record => {
                     return (
                         <Fragment>
-                            <Authorization permission='standard_view'>
+                            <Authorization permission={['Administrador']}>
                                 <button
                                     className="btn btn-info btn-sm"
                                     title="Visualizar"
@@ -76,7 +76,7 @@ export class Standards extends Component {
                                     <i className="fa fa-eye"></i>
                                 </button>
                             </Authorization>
-                            <Authorization permission='standard_edit'>
+                            <Authorization permission={['Administrador']}>
                                 <button
                                     className="btn btn-warning btn-sm"
                                     title="Editar"
@@ -86,7 +86,7 @@ export class Standards extends Component {
                                 </button>
                             </Authorization>
                             { record.status !== 'Inativo' ?
-                                <Authorization permission='standard_delete'>
+                                <Authorization permission={['Administrador']}>
                                     <button
                                         className="btn btn-danger btn-sm"
                                         title="Excluir"
@@ -99,9 +99,9 @@ export class Standards extends Component {
                                 : null
                             }
                             { record.status !== 'Ativo' ?
-                                <Authorization permission='standard_delete'>
+                                <Authorization permission={['Administrador']}>
                                     <button
-                                        className="btn btn-success btn-sm"
+                                        className="btn btn-primary btn-sm"
                                         title="Ativar"
                                         onClick={() => this.props.update({...record, status: "Ativo"})}>
                                         <i className="fa fa-check"></i>

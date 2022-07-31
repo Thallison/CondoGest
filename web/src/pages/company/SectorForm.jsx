@@ -19,7 +19,7 @@ export class SectorForm extends Component {
                                     />
                         <div className="modal-footer justify-content-between">
                             <button type="button" className="btn btn-default" data-dismiss="modal">Fechar</button>
-                            <button type='submit' className="btn btn-success" onClick={()=> window.$('#modal-sector').modal('hide')} >{this.props.labelButton}</button>
+                            <button type='submit' className="btn btn-primary" onClick={()=> window.$('#modal-sector').modal('hide')} >{this.props.labelButton}</button>
                         </div>
                     </form>
         )

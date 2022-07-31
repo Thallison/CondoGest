@@ -122,7 +122,7 @@ export class InspectionFiles extends Component {
                         </Grid>
                         <Grid cols="6 2">
                             <button
-                                className="btn btn-success float-right"
+                                className="btn btn-primary float-right"
                                 type="submit">
                                 <i className="fas fa-plus"></i> Evidência
                                         </button>

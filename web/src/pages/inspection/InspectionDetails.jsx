@@ -63,7 +63,7 @@ export class Inspection extends Component {
                     <span className='ml-1'>Cancelar Vistoria</span>
                 </button>
                 <button
-                    className="btn btn-success btn-sm ml-1"
+                    className="btn btn-primary btn-sm ml-1"
                     title="Finalizar Vistoria"
                     onClick={() => this.setShowModal(true, this.props.match.params.id, 2, 'success', 'Finalizar Vistoria')}
                 >

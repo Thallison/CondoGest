@@ -81,7 +81,7 @@ export class Companies extends Component {
                     const {sector, ...dataUpdate} = record
                     return (
                         <Fragment>
-                            <Authorization permission='company_view'>
+                            <Authorization permission={['Administrador']}>
                                 <button
                                     className="btn btn-info btn-sm"
                                     title="Visualizar"
@@ -90,7 +90,7 @@ export class Companies extends Component {
                                     <i className="fa fa-eye"></i>
                                 </button>
                             </Authorization>
-                            <Authorization permission='company_edit'>
+                            <Authorization permission={['Administrador']}>
                                 <button
                                     className="btn btn-warning btn-sm"
                                     title="Editar"
@@ -100,7 +100,7 @@ export class Companies extends Component {
                                 </button>
                             </Authorization>
                             { record.status !== 'Inativo' ?
-                                <Authorization permission='company_delete'>
+                                <Authorization permission={['Administrador']}>
                                     <button
                                         className="btn btn-danger btn-sm"
                                         title="Excluir"
@@ -113,9 +113,9 @@ export class Companies extends Component {
                                 : null
                             }
                             { record.status !== 'Ativo' ?
-                                <Authorization permission='company_delete'>
+                                <Authorization permission={['Administrador']}>
                                     <button
-                                        className="btn btn-success btn-sm"
+                                        className="btn btn-primary btn-sm"
                                         title="Ativar"
                                         onClick={() => this.props.update({...dataUpdate, status: "Ativo"})}>
                                         <i className="fa fa-check"></i>

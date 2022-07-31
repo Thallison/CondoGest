@@ -7,9 +7,9 @@
   border-radius: 20px;
 }
 
-.login-card-body .input-group .form-control, 
+.login-card-body .input-group .form-control,
 .register-card-body .input-group .form-control,
-.login-card-body .input-group .input-group-text, 
+.login-card-body .input-group .input-group-text,
 .register-card-body .input-group .input-group-text {
   border: 0;
   border-bottom: 2px solid #3F3F3F !important;
@@ -59,6 +59,12 @@
   font-weight: 600 !important;
   font-size: 1.1em !important;
 }
+
 .sidebar-dark-primary {
   background-color: #00345C !important;
+}
+
+.content-header small {
+  font-size: 50%;
+  display: block;
 }

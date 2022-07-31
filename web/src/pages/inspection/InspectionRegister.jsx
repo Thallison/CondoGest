@@ -267,7 +267,7 @@ export class InspectionRegister extends Component {
                             {this.renderCategory()}
                             <div className="box-footer">
                                 {this.renderButtons()}
-                                <button type='submit' className="btn btn-success">{labelButton}</button>
+                                <button type='submit' className="btn btn-primary">{labelButton}</button>
                             </div>
                         </form>
                     </div>

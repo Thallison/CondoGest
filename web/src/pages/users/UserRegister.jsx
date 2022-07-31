@@ -13,7 +13,7 @@ import UserForm from './UserForm'
 export class UserRegister extends Component {
     render() {
         let onSubmit, disabled, labelButton;
-
+        
         switch (this.props.type) {
             case 'create':
                 onSubmit = this.props.create;

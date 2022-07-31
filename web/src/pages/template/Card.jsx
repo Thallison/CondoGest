@@ -2,12 +2,12 @@ import React from 'react'
 import Grid from '../template/Grid'
 
 export default props =>(
-    <Grid cols="12 12 12 3">
+    <Grid cols="12 12 12 4">
     <div className={`small-box bg-${props.color}`}>
         <div className="inner">
-            <h3>{props.amount}</h3>
+            <h2>{props.text}</h2>
 
-            <p>{props.text}</p>
+            <p>{props.amount}</p>
         </div>
         <div className="icon">
             <i className={`fas fa-${props.icon}`}></i>

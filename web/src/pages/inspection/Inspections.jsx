@@ -70,7 +70,7 @@ export class Inspection extends Component {
                 cell: record => {
                     return (
                         <Fragment>
-                            <Authorization permission='inspection_view'>
+                            <Authorization permission={['Administrador']}>
                                 <button
                                     className="btn btn-info btn-sm"
                                     title="Acessar Detalhes da Vistoria"
@@ -141,7 +141,7 @@ export class Inspection extends Component {
                     />
                 </div>
                 <button
-                    className="btn btn-success float-right mb-4"
+                    className="btn btn-primary float-right mb-4"
                     type="submit">
                     <i className="fas fa-filter"></i> Filtrar
                 </button>

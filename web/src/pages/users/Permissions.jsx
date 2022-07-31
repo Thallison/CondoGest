@@ -112,7 +112,7 @@ export class Permissions extends Component {
                             }
                         } 
                         type="button"
-                        className="btn btn-success float-right mr-4 mt-2" 
+                        className="btn btn-primary float-right mr-4 mt-2" 
                         data-toggle="modal" 
                         data-target="#modal-perfil">
                         Adicionar Perfil
