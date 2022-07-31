@@ -11,11 +11,13 @@ namespace Users.Controllers
     [Route("[controller]")]
     public class UsersController : ControllerBase
     {
+        private readonly ILogger<UsersController> _logger;
         private IUserService _userService;
 
-        public UsersController(IUserService userService) 
+        public UsersController(IUserService userService, ILogger<UsersController> logger) 
         {
             _userService = userService;
+            _logger = logger;
         }
 
         [AllowAnonymous]

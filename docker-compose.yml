@@ -33,3 +33,10 @@ services:
     build:
       context: .
       dockerfile: src/Accounts/Dockerfile
+
+  bff:
+    image: ${DOCKER_REGISTRY-}bff
+    container_name: bff
+    build:
+      context: .
+      dockerfile: src/Bff/Dockerfile

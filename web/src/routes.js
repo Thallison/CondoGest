@@ -81,25 +81,25 @@ const Routes = () => (
       <PrivateRoute
         exact
         path="/app/usuarios"
-        permission={"Administrador"}
+        permission={["Administrador"]}
         component={() => <Users />}
       />
       <PrivateRoute
         exact
         path="/app/usuarios/add"
-        permission={"Administrador"}
+        permission={["Administrador"]}
         component={() => <UserRegister type="create" />}
       />
       <PrivateRoute
         exact
         path="/app/usuarios/edit/:id"
-        permission={"Administrador"}
+        permission={["Administrador"]}
         component={() => <UserRegister type="edit" />}
       />
       <PrivateRoute
         exact
         path="/app/usuarios/view/:id"
-        permission={"user_view"}
+        permission={["Administrador"]}
         component={() => <UserRegister type="view" />}
       />
       <PrivateRoute
@@ -111,32 +111,32 @@ const Routes = () => (
       <PrivateRoute
         exact
         path="/app/normas"
-        permission={"standards"}
+        permission={["Administrador"]}
         component={() => <Standards />}
       />
       <PrivateRoute
         exact
         path="/app/normas/add"
-        permission={"standard_create"}
+        permission={["Administrador"]}
         component={() => <StandardRegister type="create" />}
       />
       <PrivateRoute
         exact
         path="/app/normas/edit/:id"
-        permission={"standard_edit"}
+        permission={["Administrador"]}
         component={() => <StandardRegister type="edit" />}
       />
       <PrivateRoute
         exact
         path="/app/normas/view/:id"
-        permission={"standard_view"}
+        permission={["Administrador"]}
         component={() => <StandardRegister type="view" />}
       />
 
       <PrivateRoute
         exact
         path="/app/empresas"
-        permission={"companies"}
+        permission={["Administrador"]}
         component={() => <Companies />}
       />
       <PrivateRoute
@@ -173,13 +173,13 @@ const Routes = () => (
       <PrivateRoute
         exact
         path="/app/permissoes"
-        permission={"permission"}
+        permission={["Administrador"]}
         component={() => <Permissions />}
       />
       <PrivateRoute
         exact
         path="/app/permissoes_perfil/:id"
-        permission={"permission"}
+        permission={["Administrador"]}
         component={() => <RolePermissionsRegister />}
       />
 

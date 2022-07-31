@@ -26,9 +26,9 @@ namespace Bff.Controllers
         public async Task<IActionResult> Auth(LoginRequest model)
         {
             //var token = this.HttpContext.Request.Headers["Authorization"].ToString();
-            var ok = await _userService.Login(model);
+            var result = await _userService.Login(model);
             
-            return Ok(new { message = "Registration successful" });
+            return Ok(result);
         }
     }
 }
