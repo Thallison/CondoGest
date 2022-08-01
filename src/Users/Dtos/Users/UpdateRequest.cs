@@ -7,6 +7,8 @@ namespace Users.Dtos.Users
     {
        [Required]
         public string Name { get; set; }
+
+        public string? Password { get; set; }
         
         [Required]
         public string Role { get; set; }
