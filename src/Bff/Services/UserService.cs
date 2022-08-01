@@ -1,3 +1,4 @@
+using System;
 using Bff.Services.Interfaces;
 using Bff.Dtos.Authenticate;
 using Bff.Dtos.Users;
@@ -26,7 +27,8 @@ namespace Bff.Services
                     var responseStr = await httpResponse.Content.ReadAsStringAsync();
                     return JsonConvert.DeserializeObject<LoginResponse>(responseStr);
                 }
-                return null;
+                
+                throw new Exception("Erro serviço indiponível.");
             }
         }
 
@@ -43,7 +45,8 @@ namespace Bff.Services
                     var responseStr = await httpResponse.Content.ReadAsStringAsync();
                     return JsonConvert.DeserializeObject<List<UsersResponse>>(responseStr);
                 }
-                return null;
+
+                throw new Exception("Erro serviço indiponível.");
             }
         }
         public async Task<UsersResponse>GetById(string token, int id)
@@ -59,7 +62,8 @@ namespace Bff.Services
                     var responseStr = await httpResponse.Content.ReadAsStringAsync();
                     return JsonConvert.DeserializeObject<UsersResponse>(responseStr);
                 }
-                return null;
+
+                throw new Exception("Erro serviço indiponível.");
             }
         }
 
@@ -77,7 +81,8 @@ namespace Bff.Services
                     var responseStr = await httpResponse.Content.ReadAsStringAsync();
                     return responseStr;
                 }
-                return null;
+
+                throw new Exception("Erro serviço indiponível.");
             }
         }
 
@@ -95,7 +100,8 @@ namespace Bff.Services
                     var responseStr = await httpResponse.Content.ReadAsStringAsync();
                     return responseStr;
                 }
-                return null;
+                
+                throw new Exception("Erro serviço indiponível.");
             }
         }
     }
