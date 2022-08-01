@@ -1,5 +1,12 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
 .login-page {
   background-size: cover;
+  min-height: 100%;
 }
 
 .card,
