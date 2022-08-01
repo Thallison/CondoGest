@@ -1,4 +1,4 @@
-namespace Condominiums.Helpers.Enums
+namespace Bff.Helpers.Enums
 {
     public enum CondominiumStatus
     {

@@ -8,11 +8,21 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
 string userApi = builder.Configuration.GetSection("UsersApi").Value;
+string condominiumApi = builder.Configuration.GetSection("CondominiumApi").Value;
 
 // Add services to the container.
 services.AddHttpClient<IUserService, UserService>(client =>
 {
     client.BaseAddress = new Uri(userApi);
+    client.Timeout = TimeSpan.FromMinutes(5);
+}).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+{
+    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+});
+
+services.AddHttpClient<ICondominiumService, CondominiumService>(client =>
+{
+    client.BaseAddress = new Uri(condominiumApi);
     client.Timeout = TimeSpan.FromMinutes(5);
 }).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
 {
