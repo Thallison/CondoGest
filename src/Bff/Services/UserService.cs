@@ -28,7 +28,7 @@ namespace Bff.Services
                     return JsonConvert.DeserializeObject<LoginResponse>(responseStr);
                 }
                 
-                throw new Exception("Erro serviço indiponível.");
+                throw new Exception("Erro interno.");
             }
         }
 
@@ -46,7 +46,7 @@ namespace Bff.Services
                     return JsonConvert.DeserializeObject<List<UsersResponse>>(responseStr);
                 }
 
-                throw new Exception("Erro serviço indiponível.");
+                throw new Exception("Erro interno.");
             }
         }
         public async Task<UsersResponse>GetById(string token, int id)
@@ -63,7 +63,7 @@ namespace Bff.Services
                     return JsonConvert.DeserializeObject<UsersResponse>(responseStr);
                 }
 
-                throw new Exception("Erro serviço indiponível.");
+                throw new Exception("Erro interno.");
             }
         }
 
@@ -82,7 +82,7 @@ namespace Bff.Services
                     return responseStr;
                 }
 
-                throw new Exception("Erro serviço indiponível.");
+                throw new Exception("Erro interno.");
             }
         }
 
@@ -101,7 +101,7 @@ namespace Bff.Services
                     return responseStr;
                 }
                 
-                throw new Exception("Erro serviço indiponível.");
+                throw new Exception("Erro interno.");
             }
         }
     }
