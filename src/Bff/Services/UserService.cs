@@ -78,8 +78,7 @@ namespace Bff.Services
             {
                 if (httpResponse.IsSuccessStatusCode)
                 {
-                    var responseStr = await httpResponse.Content.ReadAsStringAsync();
-                    return responseStr;
+                    return await httpResponse.Content.ReadAsStringAsync();
                 }
 
                 throw new Exception("Erro interno.");
@@ -97,8 +96,7 @@ namespace Bff.Services
             {
                 if (httpResponse.IsSuccessStatusCode)
                 {
-                    var responseStr = await httpResponse.Content.ReadAsStringAsync();
-                    return responseStr;
+                    return await httpResponse.Content.ReadAsStringAsync();                    
                 }
                 
                 throw new Exception("Erro interno.");
