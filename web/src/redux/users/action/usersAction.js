@@ -21,9 +21,10 @@ export function update(values){
 
 function submit(values, method){
     const id = values.id ? values.id : ''
-
+console.log(method)
+console.log('id' + id);
     return dispatch => {
-        api[method](`/users/${id}`, values)
+        api[method](`users/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso.')
                 if (id) {
@@ -34,6 +35,7 @@ function submit(values, method){
                 }
             })
             .catch(e => {
+                console.log(e)
                 if (e.response) {
                     // Request made and server responded
                     e.response.data.forEach(error =>toastr.error('Erro', error.message));

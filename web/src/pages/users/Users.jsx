@@ -26,6 +26,7 @@ export class Users extends Component {
 
 
     setShowModalDelete(bool, idDelete = null) {
+      console.log('testdfdf')
         this.setState({
             showModalDelete: bool,
             idDelete: idDelete
@@ -71,7 +72,6 @@ export class Users extends Component {
                 align: "left",
                 sortable: false,
                 cell: record => {
-                    console.log(record.status)
                     return (
                       <Fragment>
                         <Authorization permission={['Administrador']}>
@@ -100,7 +100,7 @@ export class Users extends Component {
                             <i className="fa fa-pen"></i>
                           </button>
                         </Authorization>
-                        {record.status !== "Inactive" ? (
+                        {record.status !== "Inativo" ? (
                           <Authorization permission={['Administrador']}>
                             <button
                               className="btn btn-danger btn-sm"
@@ -113,16 +113,20 @@ export class Users extends Component {
                             </button>
                           </Authorization>
                         ) : null}
-                        {record.status !== "Active" ? (
+                        {record.status !== "Ativo" ? (
                           <Authorization permission={['Administrador']}>
                             <button
                               className="btn btn-primary btn-sm"
                               title="Ativar"
-                              onClick={() =>
+                              onClick={() => {
+                                console.log()
+                                
                                 this.props.update({
                                   ...record,
                                   status: 0
                                 })
+                              }
+                                
                               }
                             >
                               <i className="fa fa-check"></i>

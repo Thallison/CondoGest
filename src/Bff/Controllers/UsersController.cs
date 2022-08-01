@@ -49,6 +49,7 @@ namespace Bff.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RegisterRequest model)
         {
+            model.Cpf = cleanCpf(model.Cpf);
             model.Password = model.Cpf;
             var token = this.HttpContext.Request.Headers["Authorization"].ToString();
             var response = await _userService.Create(token, model);
@@ -61,6 +62,11 @@ namespace Bff.Controllers
             var token = this.HttpContext.Request.Headers["Authorization"].ToString();
             var response = await _userService.Update(token, id, model);
             return Ok(response);
+        }
+
+        private string cleanCpf(String cpf){
+            var output = System.Text.RegularExpressions.Regex.Replace(cpf, "[^a-z0-9_]+", "-");
+            return output;
         }
     }
 }

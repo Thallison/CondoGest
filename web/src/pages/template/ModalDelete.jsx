@@ -16,6 +16,9 @@ export default class ModalDelete extends Component {
     }
     
     render() {
+
+        console.log('teste')
+
         if (!this.props.show) {
             return null;
         }
