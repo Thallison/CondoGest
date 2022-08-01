@@ -89,6 +89,7 @@ export class UserForm extends Component {
               required={true}
               disabled={this.props.disabled}
               normalize={(input) => {
+                console.log(input)
                 if (!input) return;
 
                 return input

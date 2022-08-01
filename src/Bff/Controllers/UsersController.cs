@@ -65,7 +65,7 @@ namespace Bff.Controllers
         }
 
         private string cleanCpf(String cpf){
-            var output = System.Text.RegularExpressions.Regex.Replace(cpf, "[^a-z0-9_]+", "-");
+            var output = System.Text.RegularExpressions.Regex.Replace(cpf, "[^a-z0-9_]+", "");
             return output;
         }
     }
