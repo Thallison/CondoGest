@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Bff.Helpers.Enums;
+using Bff.Helpers;
 
 namespace Bff.Dtos.Users
 {
