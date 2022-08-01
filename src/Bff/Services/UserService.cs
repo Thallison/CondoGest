@@ -103,13 +103,13 @@ namespace Bff.Services
             }
         }
 
-        public async Task<string>Delete(string token, string id)
+        public async Task<string>Delete(string token, int id)
         {
             var encodeToken = token.Split(" ");
             
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(encodeToken.FirstOrDefault(), encodeToken.LastOrDefault());
 
-            using (var httpResponse = await _client.PostAsync($"Users/{id}"))
+            using (var httpResponse = await _client.DeleteAsync($"Users/{id}"))
             {
                 if (httpResponse.IsSuccessStatusCode)
                 {
