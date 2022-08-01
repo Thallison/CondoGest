@@ -9,7 +9,7 @@ namespace Bff.Helpers
 
         public static string cleanCpf(String cpf)
         {
-            return System.Text.RegularExpressions.Regex.Replace(cpf, "[^a-z0-9_]+", "-");
+            return System.Text.RegularExpressions.Regex.Replace(cpf, "[^a-z0-9_]+", "");
         }
     }
 }
