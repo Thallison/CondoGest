@@ -62,5 +62,13 @@ namespace Bff.Controllers
             var response = await _userService.Update(token, id, model);
             return Ok(response);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var token = this.HttpContext.Request.Headers["Authorization"].ToString();
+            await _userService.Delete(token, id);
+            return Ok(new { message = "User deleted successfully" });
+        }
     }
 }

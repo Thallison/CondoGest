@@ -102,5 +102,22 @@ namespace Bff.Services
                 throw new Exception("Erro interno.");
             }
         }
+
+        public async Task<string>Delete(string token, string id)
+        {
+            var encodeToken = token.Split(" ");
+            
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(encodeToken.FirstOrDefault(), encodeToken.LastOrDefault());
+
+            using (var httpResponse = await _client.PostAsync($"Users/{id}"))
+            {
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    return await httpResponse.Content.ReadAsStringAsync();
+                }
+
+                throw new Exception("Erro interno.");
+            }
+        }
     }
 }
