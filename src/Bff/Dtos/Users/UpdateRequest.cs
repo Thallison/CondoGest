@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Bff.Helpers.Enums;
+using Bff.Helpers;
 
 namespace Bff.Dtos.Users
 {
@@ -14,8 +15,21 @@ namespace Bff.Dtos.Users
         [Required]
         public UserStatus Status { get; set; }
         
+        private string _cpf;
+        
         [Required]
-        public string Cpf { get; set; }
+        public string Cpf
+        {
+            get
+            {
+                return this._cpf;
+            }
+
+            set 
+            {
+                _cpf = Utils.cleanCpf(value);
+            }
+        }
         
         public string? Rg { get; set; }
         
