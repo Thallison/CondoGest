@@ -4,12 +4,12 @@ import {reduxForm, Field } from 'redux-form'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { showUpdate, update } from '../../redux/companies/action/sectorStandardsAction'
-import { getList } from '../../redux/standards/action/standardsAction'
+import { showUpdate, update } from '../../redux/companies/action/sectorAccountsAction'
+import { getList } from '../../redux/accounts/action/accountsAction'
 import LabelAndCheckboxInput from '../template/LabelAndCheckboxInput'
 import Accordion from '../template/Accordion'
 
-export class SectorStandardForm extends Component {
+export class SectorAccountForm extends Component {
     componentDidMount(){
         if(this.props.match.params.id)
         this.props.showUpdate(this.props.match.params.id)
@@ -21,16 +21,16 @@ export class SectorStandardForm extends Component {
          .filter((value, index, self) => self.indexOf(value) === index)
         
         return uniqueCategory.map(category => {
-            let standards = this.props.list.filter((value) => value.category === category)
+            let accounts = this.props.list.filter((value) => value.category === category)
             return (
                 <Accordion key={category} title={category}>
-                    {standards.map(standard => 
-                        <Field key={standard.id}
-                        name={`standard.${standard.id}`} 
+                    {accounts.map(account => 
+                        <Field key={account.id}
+                        name={`account.${account.id}`} 
                         component={LabelAndCheckboxInput} 
                         type='checkbox'
-                        label={standard.codeStandard + ' - ' + standard.description}
-                        id={standard.id}
+                        label={account.codeAccount + ' - ' + account.description}
+                        id={account.id}
                         padding={''}
                         /> 
                     )}
@@ -61,9 +61,9 @@ export class SectorStandardForm extends Component {
 }
 
 
-SectorStandardForm = withRouter(SectorStandardForm)
-SectorStandardForm = reduxForm({form: 'sectorStandardForm'})(SectorStandardForm)
-const mapStateToProps = state => ({list: state.Standards.listStandards})
+SectorAccountForm = withRouter(SectorAccountForm)
+SectorAccountForm = reduxForm({form: 'sectorAccountForm'})(SectorAccountForm)
+const mapStateToProps = state => ({list: state.Accounts.listAccounts})
 const mapDispactchToProps = dispatch => bindActionCreators({showUpdate, getList, update}, dispatch)
-export default connect(mapStateToProps, mapDispactchToProps)(SectorStandardForm)
+export default connect(mapStateToProps, mapDispactchToProps)(SectorAccountForm)
 

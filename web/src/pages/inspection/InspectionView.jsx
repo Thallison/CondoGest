@@ -81,15 +81,15 @@ export class InspectionView extends Component {
   }
 
   renderRows() {
-    const standards = this.props.inspection.standards;
+    const accounts = this.props.inspection.accounts;
 
-    if (typeof standards !== "undefined")
-      return standards.map((standard) => (
+    if (typeof accounts !== "undefined")
+      return accounts.map((account) => (
         <Row
-          key={standard.id}
-          codeStandard={standard.codeStandard}
-          description={standard.description}
-          {...standard.pivot}
+          key={account.id}
+          codeStandard={account.codeStandard}
+          description={account.description}
+          {...account.pivot}
         />
       ));
   }

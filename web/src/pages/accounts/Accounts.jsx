@@ -8,12 +8,12 @@ import Content from '../template/Content'
 import ModalDelete from '../template/ModalDelete'
 import Authorization from '../template/Authorization'
 
-import { getList, update, destroy } from '../../redux/standards/action/standardsAction'
+import { getList, update, destroy } from '../../redux/accounts/action/accountsAction'
 
 import DataTable from 'react-data-table-component';
 import DataTableExtensions from "react-data-table-component-extensions";
 
-export class Standards extends Component {
+export class Accounts extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,23 +38,23 @@ export class Standards extends Component {
     getColumns() {
         return [
             {
-                name: 'Código Norma',
-                selector: 'codeStandard',
-                sortable: true,
-            },
-            {
                 name: 'Nome',
                 selector: 'name',
                 sortable: true,
             },
             {
-                name: 'Categoria',
-                selector: 'category',
+                name: 'Valor',
+                selector: 'price',
                 sortable: true,
             },
             {
                 name: 'Status',
                 selector: 'status',
+                sortable: true,
+            },
+            {
+                name: 'Vencimento',
+                selector: 'duedate',
                 sortable: true,
             },
             {
@@ -126,7 +126,7 @@ export class Standards extends Component {
                         destroy={this.props.destroy}
                         setShowModalDelete={this.setShowModalDelete} />
                     : null}
-                <ContentHeader title='Consulta Normas' small='' />
+                <ContentHeader title='Consulta Contas' small='' />
                 <Content>
                     <div className="card-body">
                         <DataTableExtensions
@@ -162,7 +162,7 @@ export class Standards extends Component {
 }
 
 
-Standards = withRouter(Standards)
-const mapStateToProps = state => ({ list: state.Standards.listStandards })
+Accounts = withRouter(Accounts)
+const mapStateToProps = state => ({ list: state.Accounts.listAccounts })
 const mapDispatchToProps = dispatch => bindActionCreators({ getList, destroy, update }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(Standards)
+export default connect(mapStateToProps, mapDispatchToProps)(Accounts)

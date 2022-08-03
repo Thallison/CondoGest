@@ -6,9 +6,9 @@ export function  getList(status = null) {
 
     const params = {params: {status: status}}
 
-    const request = api.get("standards", params)
+    const request = api.get("condominiums", params)
     return {
-        type: 'STANDARD_FETCHED',
+        type: 'CONDOMINIUM_FETCHED',
         payload: request
     }
 }
@@ -27,14 +27,14 @@ function submit(values, method){
     const id = values.id ? values.id : ''
     console.log(values)
     return dispatch => {
-        api[method](`/standards/${id}`, values)
+        api[method](`/condominiums/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso.')
                 if (id) {
                     dispatch([showUpdate(id), getList()])
                 }
                 else {
-                    dispatch([resetForm('standardForm')])
+                    dispatch([resetForm('condominiumForm')])
                 }
             })
             .catch(e => {
@@ -50,17 +50,17 @@ function submit(values, method){
 
 export function showUpdate(id) {
     return dispatch => 
-    api.get(`/standards/${id}`)
+    api.get(`/condominiums/${id}`)
         .then(resp => {
             dispatch([
-                initialize('standardForm', resp.data)
+                initialize('condominiumForm', resp.data)
             ])
         })
 }
 
 export function destroy(id) {
     return dispatch => 
-    api.delete(`/standards/${id}`)
+    api.delete(`/condominiums/${id}`)
         .then(resp => {
             toastr.success('Sucesso', 'Operação realizada com sucesso.')
             dispatch([

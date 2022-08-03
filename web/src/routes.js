@@ -15,11 +15,13 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Users from "./pages/users/Users";
 import UserRegister from "./pages/users/UserRegister";
 import UserProfile from "./pages/users/UserProfile";
-import Standards from "./pages/standard/Standards";
-import StandardRegister from "./pages/standard/StandardRegister";
+import Accounts from "./pages/accounts/Accounts";
+import AccountRegister from "./pages/accounts/AccountRegister";
+import Condominiums from "./pages/condominiums/Condominiums";
+import CondominiumRegister from "./pages/condominiums/CondominiumRegister";
 import Companies from "./pages/company/Companies";
 import Sectors from "./pages/company/Sectors";
-import SectorStandardRegister from "./pages/company/SectorStandardRegister";
+import SectorAccountRegister from "./pages/company/SectorAccountRegister";
 import CompanyRegister from "./pages/company/CompanyRegister";
 import Permissions from "./pages/users/Permissions";
 import RolePermissionsRegister from "./pages/users/RolePermissionsRegister";
@@ -110,27 +112,52 @@ const Routes = () => (
 
       <PrivateRoute
         exact
-        path="/app/normas"
+        path="/app/contas"
         permission={["Administrador"]}
-        component={() => <Standards />}
+        component={() => <Accounts />}
       />
       <PrivateRoute
         exact
-        path="/app/normas/add"
+        path="/app/contas/add"
         permission={["Administrador"]}
-        component={() => <StandardRegister type="create" />}
+        component={() => <AccountRegister type="create" />}
       />
       <PrivateRoute
         exact
-        path="/app/normas/edit/:id"
+        path="/app/contas/edit/:id"
         permission={["Administrador"]}
-        component={() => <StandardRegister type="edit" />}
+        component={() => <AccountRegister type="edit" />}
       />
       <PrivateRoute
         exact
-        path="/app/normas/view/:id"
+        path="/app/contas/view/:id"
         permission={["Administrador"]}
-        component={() => <StandardRegister type="view" />}
+        component={() => <AccountRegister type="view" />}
+      />
+      
+      <PrivateRoute
+        exact
+        path="/app/condominios"
+        permission={["Administrador"]}
+        component={() => <Condominiums />}
+      />
+      <PrivateRoute
+        exact
+        path="/app/condominios/add"
+        permission={["Administrador"]}
+        component={() => <CondominiumRegister type="create" />}
+      />
+      <PrivateRoute
+        exact
+        path="/app/condominios/edit/:id"
+        permission={["Administrador"]}
+        component={() => <CondominiumRegister type="edit" />}
+      />
+      <PrivateRoute
+        exact
+        path="/app/condominios/view/:id"
+        permission={["Administrador"]}
+        component={() => <CondominiumRegister type="view" />}
       />
 
       <PrivateRoute
@@ -167,7 +194,7 @@ const Routes = () => (
         exact
         path="/app/normas_setor/:id"
         permission={["Administrador"]}
-        component={() => <SectorStandardRegister />}
+        component={() => <SectorAccountRegister />}
       />
 
       <PrivateRoute

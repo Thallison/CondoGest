@@ -10,7 +10,6 @@ import LabelAndInput from "../template/LabelAndInput";
 
 export class UserForm extends Component {
   componentDidMount() {
-    this.props.getList();
     if (this.props.match.params.id)
       this.props.showUpdate(this.props.match.params.id);
   }
@@ -28,6 +27,15 @@ export class UserForm extends Component {
       </option>
     ));
     return options;
+  }
+
+  cpfMask(input) {
+    return input
+      .replace(/\D/g, "") // substitui qualquer caracter que nao seja numero por nada
+      .replace(/(\d{3})(\d)/, "$1.$2") // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d)/, "$1-$2")
+      .replace(/(-\d{2})\d+?$/, "$1");
   }
 
   renderSelectStatus() {
@@ -89,15 +97,8 @@ export class UserForm extends Component {
               required={true}
               disabled={this.props.disabled}
               normalize={(input) => {
-                console.log(input)
                 if (!input) return;
-
-                return input
-                  .replace(/\D/g, "") // substitui qualquer caracter que nao seja numero por nada
-                  .replace(/(\d{3})(\d)/, "$1.$2") // captura 2 grupos de numero o primeiro de 3 e o segundo de 1, apos capturar o primeiro grupo ele adiciona um ponto antes do segundo grupo de numero
-                  .replace(/(\d{3})(\d)/, "$1.$2")
-                  .replace(/(\d{3})(\d)/, "$1-$2")
-                  .replace(/(-\d{2})\d+?$/, "$1");
+                return this.cpfMask(input);
               }}
             />
 

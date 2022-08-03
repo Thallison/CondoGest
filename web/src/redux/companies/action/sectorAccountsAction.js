@@ -3,9 +3,9 @@ import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 
 export function  getList() {
-    const request = api.get("sector_standards")
+    const request = api.get("sector_accounts")
     return {
-        type: 'SECTOR_STANDARDS_FETCHED',
+        type: 'SECTOR_ACCOUNTS_FETCHED',
         payload: request
     }
 }
@@ -20,19 +20,19 @@ export function update(values, sectorId){
 }
 
 function submit(values, method, sectorId){
-    var standards = []
-    Object.keys(values.standard).forEach((key)=>{ 
-        if(values.standard[key])
+    var accounts = []
+    Object.keys(values.account).forEach((key)=>{ 
+        if(values.account[key])
         { 
-            standards.push(key)
+            accounts.push(key)
         } 
     })
     const data = {
-        standard: standards
+        account: accounts
     }
     const id = sectorId ? sectorId : ''
     return dispatch => {
-        api[method](`/sector_standards/${id}`, data)
+        api[method](`/sector_accounts/${id}`, data)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso.')
                 if (id) {
@@ -54,7 +54,7 @@ function submit(values, method, sectorId){
 
 export function showUpdate(id) {
     return dispatch => 
-    api.get(`/sector_standards/${id}`)
+    api.get(`/sector_accounts/${id}`)
         .then(resp => {
             var data = []
             Object.keys(resp.data).forEach((key)=>{ 
@@ -62,14 +62,14 @@ export function showUpdate(id) {
             })  
 
             dispatch([
-                initialize('sectorStandardForm', {standard: data})
+                initialize('sectorStandardForm', {account: data})
             ])
         })
 }
 
 export function showSectorInspection(e, id) {
     return dispatch => 
-    api.get(`/sector_standards/${id}`)
+    api.get(`/sector_accounts/${id}`)
         .then(resp => {
             var data = []
             Object.keys(resp.data).forEach((key)=>{ 
@@ -79,7 +79,7 @@ export function showSectorInspection(e, id) {
                 initialize('inspectionForm', {
                     company_id: e.value,
                     companyName: e.companyName,
-                    standard: data})
+                    account: data})
             ])
         })
 }

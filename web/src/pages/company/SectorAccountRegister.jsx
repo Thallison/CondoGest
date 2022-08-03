@@ -6,11 +6,11 @@ import { connect } from 'react-redux'
 import ContentHeader from '../template/ContentHeader'
 import Content from '../template/Content'
 
-import {update } from '../../redux/companies/action/sectorStandardsAction'
+import {update } from '../../redux/companies/action/sectorAccountsAction'
 
-import SectorStandardForm from './SectorStandardForm'
+import SectorAccountForm from './SectorAccountForm'
 
-export class SectorStandardRegister extends Component {
+export class SectorAccountRegister extends Component {
     render() {
         const labelButton = "Atribuir Normas ao Setor";
 
@@ -19,15 +19,15 @@ export class SectorStandardRegister extends Component {
                 <ContentHeader title='Atribuir Normas ao Setor'/> 
                 <Content>
                     <div className="card-body">
-                        <SectorStandardForm onSubmit={this.props.update} labelButton = {labelButton}/>
+                        <SectorAccountForm onSubmit={this.props.update} labelButton = {labelButton}/>
                     </div>
                 </Content>
             </div>
         )
     }
 }
-SectorStandardRegister = withRouter(SectorStandardRegister)
+SectorAccountRegister = withRouter(SectorAccountRegister)
 const mapDispactchToProps = dispatch => bindActionCreators({update}, dispatch)
-export default connect(null, mapDispactchToProps)(SectorStandardRegister)
+export default connect(null, mapDispactchToProps)(SectorAccountRegister)
 
 

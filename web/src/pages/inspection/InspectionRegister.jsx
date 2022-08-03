@@ -12,9 +12,9 @@ import Grid from '../template/Grid'
 import Accordion from '../template/Accordion'
 
 import { getList as getListCompanies } from '../../redux/companies/action/companiesAction'
-import { getList as getListStandards } from '../../redux/standards/action/standardsAction'
+import { getList as getListAccounts } from '../../redux/accounts/action/accountsAction'
 import { create,update, showUpdate } from '../../redux/inspection/action/inspectionAction'
-import { showSectorInspection } from '../../redux/companies/action/sectorStandardsAction'
+import { showSectorInspection } from '../../redux/companies/action/sectorAccountsAction'
 
 const InputCheckbox = (props) => (
     <div className="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
@@ -52,19 +52,19 @@ const InputTextArea = props => (
     </Grid>
 );
 
-let Standard = props => {
+let Account = props => {
     let applicable = false
     if (typeof props.fields !== 'undefined') {
-        if (typeof props.fields.standard[props.id] !== 'undefined')
-            applicable = props.fields.standard[props.id].applicable
+        if (typeof props.fields.account[props.id] !== 'undefined')
+            applicable = props.fields.account[props.id].applicable
     }
     return (
         <>
             <div className="form-group col-12">
-                <div>{props.labelStandard}</div>
+                <div>{props.labelAccount}</div>
                 <span>Aplicável?</span>
                 <Field
-                    name={`standard[${props.id}].applicable`}
+                    name={`account[${props.id}].applicable`}
                     id={props.id}
                     type='checkbox'
                     label=''
@@ -77,45 +77,45 @@ let Standard = props => {
                     <Grid cols="12 3">
                         <span>Status de Adequação</span>
                         <Field
-                            name={`standard[${props.id}].status`}
+                            name={`account[${props.id}].status`}
                             label="Não atendido"
                             type="radio"
                             value="1"
-                            id={`standard[${props.id}].radio1`}
+                            id={`account[${props.id}].radio1`}
                             component={InputRadio}
                             required={applicable}
                         />
                         <Field
-                            name={`standard[${props.id}].status`}
+                            name={`account[${props.id}].status`}
                             label="Não atendido, mas com iniciativas"
                             type="radio"
                             value="2"
-                            id={`standard[${props.id}].radio2`}
+                            id={`account[${props.id}].radio2`}
                             component={InputRadio}
                             required={applicable}
                         />
                         <Field
-                            name={`standard[${props.id}].status`}
+                            name={`account[${props.id}].status`}
                             label="Atende, mas há ressalvas"
                             type="radio"
                             value="3"
-                            id={`standard[${props.id}].radio3`}
+                            id={`account[${props.id}].radio3`}
                             component={InputRadio}
                             required={applicable}
                         />
                         <Field
-                            name={`standard[${props.id}].status`}
+                            name={`account[${props.id}].status`}
                             label="Atende"
                             type="radio"
                             value="4"
-                            id={`standard[${props.id}].radio4`}
+                            id={`account[${props.id}].radio4`}
                             component={InputRadio}
                             required={applicable}
                         />
                     </Grid>
-                    <Field name={`standard[${props.id}].observation`} component={InputTextArea} />
-                    <Field name={`standard[${props.id}].who`} label="Quem:" component={InputText} />
-                    <Field name={`standard[${props.id}].when`} label="Quando:" component={InputText} />
+                    <Field name={`account[${props.id}].observation`} component={InputTextArea} />
+                    <Field name={`account[${props.id}].who`} label="Quem:" component={InputText} />
+                    <Field name={`account[${props.id}].when`} label="Quando:" component={InputText} />
 
                 </div>
             </div>
@@ -126,7 +126,7 @@ let Standard = props => {
 const mapStateToProps1 = state => ({
     fields: getFormValues("inspectionForm")(state)
 })
-Standard = connect(mapStateToProps1)(Standard)
+Account = connect(mapStateToProps1)(Account)
 
 
 
@@ -135,12 +135,12 @@ Standard = connect(mapStateToProps1)(Standard)
 export class InspectionRegister extends Component {
     componentDidMount() {
         this.props.getListCompanies('Ativo')
-        this.props.getListStandards('Ativo')
+        this.props.getListAccounts('Ativo')
         if (this.props.match.params.id) {
             this.props.showUpdate(this.props.match.params.id)
         } else {
             this.props.initialize({
-                standard: []
+                account: []
             });
         }
     }
@@ -161,7 +161,7 @@ export class InspectionRegister extends Component {
                             this.props.showSectorInspection(e, e.sector)
                         } else {
                             this.props.initialize({
-                                standard: []
+                                account: []
                             });
                         }
                     }
@@ -172,18 +172,18 @@ export class InspectionRegister extends Component {
     }
 
     renderCategory() {
-        var uniqueCategory = this.props.listStandards.map(item => item.category)
+        var uniqueCategory = this.props.listAccounts.map(item => item.category)
             .filter((value, index, self) => self.indexOf(value) === index)
 
         return uniqueCategory.map(category => {
-            let standards = this.props.listStandards.filter((value) => value.category === category)
+            let accounts = this.props.listAccounts.filter((value) => value.category === category)
             return (
                 <Accordion key={category} title={category}>
-                    {standards.map(standard =>
-                        <Standard
-                            key={standard.id}
-                            labelStandard={standard.codeStandard + ' - ' + standard.description}
-                            id={standard.id}
+                    {accounts.map(account =>
+                        <Account
+                            key={account.id}
+                            labelAccount={account.codeAccount + ' - ' + account.description}
+                            id={account.id}
                         />
                     )}
                 </Accordion>
@@ -280,13 +280,13 @@ export class InspectionRegister extends Component {
 
 InspectionRegister = withRouter(InspectionRegister)
 InspectionRegister = reduxForm({ form: 'inspectionForm' })(InspectionRegister)
-const mapStateToProps = state => ({ listCompanies: state.Companies.listCompanies, listStandards: state.Standards.listStandards })
+const mapStateToProps = state => ({ listCompanies: state.Companies.listCompanies, listAccounts: state.Accounts.listAccounts })
 const mapDispatchToProps = dispatch => bindActionCreators(
     { 
         create, 
         update,
         getListCompanies, 
-        getListStandards, 
+        getListAccounts, 
         showSectorInspection, 
         showUpdate 
     }

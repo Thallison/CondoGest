@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 import {reducer as toastrReducer} from 'react-redux-toastr'
 import UsersReducer from './redux/users/reducers/usersReducer'
-import StandardsReducer from './redux/standards/reducers/standardsReducer'
+import AccountsReducer from './redux/accounts/reducers/accountsReducer'
+import CondominiumsReducer from './redux/condominiums/reducers/condominiumsReducer'
 import CompaniesReducer from './redux/companies/reducers/companiesReducer'
 import SectorsReducer from './redux/companies/reducers/sectorsReducer'
 import PermissionsReducer from './redux/permissions/reducers/permissionsReducer'
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     dashboard: () => ({}),
     form: formReducer,
     Users: UsersReducer,
-    Standards: StandardsReducer,
+    Accounts: AccountsReducer,
+    Condominiums: CondominiumsReducer,
     Companies: CompaniesReducer,
     Sectors: SectorsReducer,
     Roles: PermissionsReducer,

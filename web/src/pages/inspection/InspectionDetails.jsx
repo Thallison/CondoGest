@@ -198,19 +198,19 @@ export class Inspection extends Component {
                                     <tbody>
                                         <tr>
                                             <td>Não Atendido: </td>
-                                            <td>{'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 1).length : null}</td>
+                                            <td>{'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 1).length : null}</td>
                                         </tr>
                                         <tr>
                                             <td>Não Atendido,mas com iniciativas: </td>
-                                            <td>{'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 2).length : null}</td>
+                                            <td>{'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 2).length : null}</td>
                                         </tr>
                                         <tr>
                                             <td>Atende, mas há ressalvas: </td>
-                                            <td>{'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 3).length : null}</td>
+                                            <td>{'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 3).length : null}</td>
                                         </tr>
                                         <tr>
                                             <td>Atende: </td>
-                                            <td>{'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 4).length : null}</td>
+                                            <td>{'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 4).length : null}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -231,10 +231,10 @@ export class Inspection extends Component {
                                     ],
                                     datasets: [{
                                         data: [
-                                            'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 1).length : null,
-                                            'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 2).length : null,
-                                            'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 3).length : null,
-                                            'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 4).length : null,
+                                            'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 1).length : null,
+                                            'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 2).length : null,
+                                            'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 3).length : null,
+                                            'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 4).length : null,
                                         ],
                                         backgroundColor: [
                                             '#FF6A66',
@@ -277,10 +277,10 @@ export class Inspection extends Component {
                                             scaleSteps: 9,
                                             scaleStartValue: 0,
                                             data: [
-                                                'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 1).length : null,
-                                                'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 2).length : null,
-                                                'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 3).length : null,
-                                                'standards' in inspection ? inspection.standards.filter((obj) => obj.pivot.status === 4).length : null,
+                                                'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 1).length : null,
+                                                'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 2).length : null,
+                                                'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 3).length : null,
+                                                'accounts' in inspection ? inspection.accounts.filter((obj) => obj.pivot.status === 4).length : null,
                                             ],
                                             backgroundColor: [
                                                 '#FF6A66',

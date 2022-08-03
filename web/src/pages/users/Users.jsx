@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { withRouter } from "react-router-dom";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
+import { getId } from "../../services/auth";
 
 import ContentHeader from '../template/ContentHeader'
 import Content from '../template/Content'
@@ -100,14 +100,15 @@ export class Users extends Component {
                             <i className="fa fa-pen"></i>
                           </button>
                         </Authorization>
-                        {record.status !== "Inativo" ? (
+                        {record.status !== "Inativo" && record.id !== getId() ? (
                           <Authorization permission={['Administrador']}>
                             <button
                               className="btn btn-danger btn-sm"
                               title="Excluir"
-                              onClick={() =>
+                              onClick={() =>{
                                 this.setShowModalDelete(true, record.id)
                               }
+                            }
                             >
                               <i className="fa fa-trash-alt"></i>
                             </button>
@@ -120,10 +121,10 @@ export class Users extends Component {
                               title="Ativar"
                               onClick={() => {
                                 console.log()
-                                
+
                                 this.props.update({
                                   ...record,
-                                  status: 0
+                                  status: 1
                                 })
                               }
                                 
