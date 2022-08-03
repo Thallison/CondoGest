@@ -21,7 +21,6 @@ namespace Accounts.Dtos.Account
         [Required]
         public int Status { get; set; }
         
-        [Required]
         public string Observation { get; set; }
     }
 }
