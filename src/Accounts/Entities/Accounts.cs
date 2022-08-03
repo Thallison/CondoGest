@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Accounts.Helpers.Enums;
 
 namespace Accounts.Entities
 {
@@ -11,7 +12,7 @@ namespace Accounts.Entities
         public DateTime DueDate { get; set; }
         public DateTime? PayDay { get; set; }
         public string Description { get; set; }
-        public int Status { get; set; }
+        public AccountStatus Status { get; set; }
         public string? Observation { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

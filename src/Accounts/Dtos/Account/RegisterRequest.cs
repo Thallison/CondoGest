@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Accounts.Helpers.Enums;
 
 namespace Accounts.Dtos.Account
 {
@@ -22,7 +23,7 @@ namespace Accounts.Dtos.Account
         public string Description { get; set; }
         
         [Required]
-        public int Status { get; set; }
+        public AccountStatus Status { get; set; }
         
         public string? Observation { get; set; }
     }

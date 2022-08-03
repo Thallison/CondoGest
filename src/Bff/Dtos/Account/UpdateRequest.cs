@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Bff.Helpers;
+using Bff.Helpers.Enums;
 
 namespace Bff.Dtos.Account
 {
@@ -33,7 +34,7 @@ namespace Bff.Dtos.Account
         public string Description { get; set; }
         
         [Required]
-        public int Status { get; set; }
+        public AccountStatus Status { get; set; }
         
         public string Observation { get; set; }
     }
