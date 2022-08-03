@@ -6,7 +6,7 @@ export function  getList(status = null) {
 
     const params = {params: {status: status}}
 
-    const request = api.get("condominiums", params)
+    const request = api.get("condominium", params)
     return {
         type: 'CONDOMINIUM_FETCHED',
         payload: request
@@ -27,7 +27,7 @@ function submit(values, method){
     const id = values.id ? values.id : ''
     console.log(values)
     return dispatch => {
-        api[method](`/condominiums/${id}`, values)
+        api[method](`/condominium/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso.')
                 if (id) {
@@ -50,7 +50,7 @@ function submit(values, method){
 
 export function showUpdate(id) {
     return dispatch => 
-    api.get(`/condominiums/${id}`)
+    api.get(`/condominium/${id}`)
         .then(resp => {
             dispatch([
                 initialize('condominiumForm', resp.data)
@@ -60,7 +60,7 @@ export function showUpdate(id) {
 
 export function destroy(id) {
     return dispatch => 
-    api.delete(`/condominiums/${id}`)
+    api.delete(`/condominium/${id}`)
         .then(resp => {
             toastr.success('Sucesso', 'Operação realizada com sucesso.')
             dispatch([

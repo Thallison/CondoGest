@@ -39,12 +39,12 @@ export class CondominiumForm extends Component {
 
     renderSelectStatus() {
         let statusList = ["Ativo", "Inativo", "Desabilitado"];
-        const options = statusList.map((e) => (
+        const optionsStatus = statusList.map((e) => (
           <option key={e} value={e}>
             {e}
           </option>
         ));
-        return options;
+        return optionsStatus;
     }
 
     renderSelectEstados() {
@@ -55,7 +55,7 @@ export class CondominiumForm extends Component {
             { nome: 'Amazonas', sigla: 'AM' },
             { nome: 'Bahia', sigla: 'BA' },
             { nome: 'Ceará', sigla: 'CE' },
-            { nome: 'Espírit sigla:  Santo' },
+            { nome: 'Espírito Santo', sigla:'ES' },
             { nome: 'Goiás', sigla: 'GO' },
             { nome: 'Maranhão', sigla: 'MA' },
             { nome: 'Mato Grosso', sigla: 'MT' },
@@ -77,12 +77,12 @@ export class CondominiumForm extends Component {
             { nome: 'Tocantins', sigla: 'TO' }
         ]
 
-        const options = estados.map((e) => (
+        const optionsEstado = estados.map((e) => (
             <option key={e.sigla} value={e.sigla}>
               {e.nome}
             </option>
         ));
-        return options;
+        return optionsEstado;
     }
 
     render() {
@@ -179,7 +179,7 @@ export class CondominiumForm extends Component {
                                 <div className="form-group col-xs-12 col-sm-3">
                                     <label>Estado: *</label>
                                     <Field
-                                        name="status"
+                                        name="state"
                                         component="select"
                                         className="form-control"
                                         required={true}

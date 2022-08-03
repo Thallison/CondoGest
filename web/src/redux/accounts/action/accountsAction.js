@@ -6,7 +6,7 @@ export function  getList(status = null) {
 
     const params = {params: {status: status}}
 
-    const request = api.get("accounts", params)
+    const request = api.get("account", params)
     return {
         type: 'ACCOUNT_FETCHED',
         payload: request
@@ -15,7 +15,6 @@ export function  getList(status = null) {
 
 
 export function create(values){
-    console.log(values)
     return submit(values, 'post')
 }
 
@@ -25,9 +24,8 @@ export function update(values){
 
 function submit(values, method){
     const id = values.id ? values.id : ''
-    console.log(values)
     return dispatch => {
-        api[method](`/accounts/${id}`, values)
+        api[method](`/account/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso.')
                 if (id) {
@@ -50,7 +48,7 @@ function submit(values, method){
 
 export function showUpdate(id) {
     return dispatch => 
-    api.get(`/accounts/${id}`)
+    api.get(`/account/${id}`)
         .then(resp => {
             dispatch([
                 initialize('accountForm', resp.data)
@@ -60,7 +58,7 @@ export function showUpdate(id) {
 
 export function destroy(id) {
     return dispatch => 
-    api.delete(`/accounts/${id}`)
+    api.delete(`/account/${id}`)
         .then(resp => {
             toastr.success('Sucesso', 'Operação realizada com sucesso.')
             dispatch([
