@@ -24,7 +24,7 @@ namespace Bff.Dtos.Account
         public string Description { get; set; }
         
         [Required]
-        public int Status { get; set; }
+        public AccountStatus Status { get; set; }
         
         [Required]
         public string Observation { get; set; }
