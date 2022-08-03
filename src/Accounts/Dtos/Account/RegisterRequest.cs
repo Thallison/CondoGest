@@ -11,7 +11,7 @@ namespace Accounts.Dtos.Account
         public string Name { get; set; }
         
         [Required]
-        public Decimal Price { get; set; }
+        public string Price { get; set; }
         
         [Required]
         public DateTime DueDate { get; set; }
@@ -24,6 +24,6 @@ namespace Accounts.Dtos.Account
         [Required]
         public int Status { get; set; }
         
-        public string Observation { get; set; }
+        public string? Observation { get; set; }
     }
 }

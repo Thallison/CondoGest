@@ -8,7 +8,7 @@ namespace Accounts.Dtos.Account
         public string Name { get; set; }
         
         [Required]
-        public Decimal Price { get; set; }
+        public string Price { get; set; }
         
         [Required]
         public DateTime DueDate { get; set; }

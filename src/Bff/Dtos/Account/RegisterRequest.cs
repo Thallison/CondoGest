@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Bff.Helpers;
 
 namespace Bff.Dtos.Account
 {
@@ -10,8 +11,21 @@ namespace Bff.Dtos.Account
         [Required]
         public string Name { get; set; }
         
+        private string _price;
+        
         [Required]
-        public Decimal Price { get; set; }
+        public string Price
+        {
+            get
+            {
+                return this._price;
+            }
+
+            set 
+            {
+                _price = Utils.formatPrice(value);
+            }
+        }
         
         [Required]
         public DateTime DueDate { get; set; }
@@ -24,7 +38,6 @@ namespace Bff.Dtos.Account
         [Required]
         public int Status { get; set; }
         
-        [Required]
-        public string Observation { get; set; }
+        public string? Observation { get; set; }
     }
 }

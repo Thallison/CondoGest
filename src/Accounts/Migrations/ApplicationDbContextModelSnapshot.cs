@@ -43,7 +43,6 @@ namespace Accounts.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Observation")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime?>("PayDay")
