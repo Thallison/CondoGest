@@ -27,7 +27,7 @@ namespace Bff.Dtos.Account
 
             set 
             {
-                _price = Utils.formatPrice(value);
+                _price = Utils.FormatPrice(value);
             }
         }
         
