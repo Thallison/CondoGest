@@ -27,7 +27,7 @@ namespace Bff.Dtos.Users
 
             set 
             {
-                _cpf = Utils.cleanCpf(value);
+                _cpf = Utils.CleanStringOnlyNumber(value);
             }
         }
         

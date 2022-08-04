@@ -1,6 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Bff.Helpers.Enums;
 using Bff.Helpers;
+using System.Globalization;
+
 
 namespace Bff.Dtos.Account
 {
@@ -12,8 +15,21 @@ namespace Bff.Dtos.Account
         [Required]
         public string Name { get; set; }
         
+        private string _price;
+        
         [Required]
-        public string Price { get; set; }
+        public string Price
+        {
+            get
+            {
+                return this._price;
+            }
+
+            set 
+            {
+                _price = Utils.FormatPrice(value);
+            }
+        }
         
         [Required]
         public DateTime DueDate { get; set; }

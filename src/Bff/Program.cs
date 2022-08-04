@@ -3,6 +3,9 @@ using Bff.Helpers;
 using System.Text.Json.Serialization;
 using Bff.Services.Interfaces;
 using Bff.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -71,6 +74,14 @@ var app = builder.Build();
     // custom jwt auth middleware
     app.UseMiddleware<JwtMiddleware>();
 }
+
+var supportedCultures = new[] { new CultureInfo("pt-BR") };
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(culture: "pt-BR", uiCulture: "pt-BR"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

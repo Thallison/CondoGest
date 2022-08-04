@@ -27,11 +27,37 @@ namespace Bff.Dtos.Condominium
         [Required]
         public string State { get; set; }
 
+        private string _postalCode;
+        
         [Required]
-        public string PostalCode { get; set; }
+        public string PostalCode
+        {
+            get
+            {
+                return this._postalCode;
+            }
 
+            set 
+            {
+                _postalCode = Utils.FormatPostalCode(value);
+            }
+        }
+
+        private string _cnpj;
+        
         [Required]
-        public string Cnpj { get; set; }
+        public string Cnpj
+        {
+            get
+            {
+                return this._cnpj;
+            }
+
+            set 
+            {
+                _cnpj = Utils.FormatCNPJ(value);
+            }
+        }
 
         [Required]
         [EmailAddress(ErrorMessage = "Email in invalid format.")]

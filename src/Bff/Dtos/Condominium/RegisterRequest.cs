@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Bff.Helpers.Enums;
+using Bff.Helpers;
 
 namespace Bff.Dtos.Condominium
 {
@@ -26,11 +27,37 @@ namespace Bff.Dtos.Condominium
         [Required]
         public string State { get; set; }
 
-        [Required]
-        public string PostalCode { get; set; }
+        private string _postalCode { get; set; }
 
         [Required]
-        public string Cnpj { get; set; }
+        public string PostalCode
+        {
+            get
+            {
+                return this._postalCode;
+            }
+
+            set 
+            {
+                _postalCode = Utils.CleanStringOnlyNumber(value);
+            }
+        }
+
+        private string _cnpj;
+        
+        [Required]
+        public string Cnpj
+        {
+            get
+            {
+                return this._cnpj;
+            }
+
+            set 
+            {
+                _cnpj = Utils.CleanStringOnlyNumber(value);
+            }
+        }
 
         [Required]
         [EmailAddress(ErrorMessage = "Email in invalid format.")]

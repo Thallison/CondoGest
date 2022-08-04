@@ -21,7 +21,7 @@ namespace Bff.Dtos.Users
         {
             get
             {
-                return Utils.formatCpf(this._cpf);
+                return Utils.FormatCpf(this._cpf);
             }
 
             set 
