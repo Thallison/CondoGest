@@ -40,7 +40,7 @@ export class AccountForm extends Component {
         ));
         return options;
     }
-
+    
     render() {
         const {handleSubmit} = this.props
         const button = this.props.disabled ?
@@ -75,6 +75,7 @@ export class AccountForm extends Component {
                                         {this.renderSelectStatus()}
                                     </Field>
                                 </div>
+                                
                                 <Field 
                                     name='price' 
                                     component={LabelAneInput} 
@@ -124,9 +125,8 @@ export class AccountForm extends Component {
     }
 }
 
-
 AccountForm = withRouter(AccountForm)
 AccountForm = reduxForm({form: 'accountForm'})(AccountForm)
 const mapDispactchToProps = dispatch => bindActionCreators({showUpdate}, dispatch)
-export default connect(null, mapDispactchToProps)(AccountForm)
+export default connect(mapDispactchToProps)(AccountForm)
 

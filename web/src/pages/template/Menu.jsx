@@ -14,13 +14,13 @@ export default props => (
                 <MenuItem path='#app/contas' label='Consultar Contas' icon='bars' permission={['Administrador']}/>
                 <MenuItem path='#app/contas/add' label='Adicionar Conta' icon='plus' permission={['Administrador']}/>
             </MenuTree>
-            <MenuTree label='Notificações' icon='bell' permission={[]}>
-                <MenuItem path='#app/empresas' label='Consultar Notificações' icon='bars' permission={[]}/>
-                <MenuItem path='#app/empresas/add' label='Adicionar Notificação' icon='plus' permission={[]}/>
+            <MenuTree label='Notificações' icon='bell' permission={['TESTE']}>
+                <MenuItem path='#app/empresas' label='Consultar Notificações' icon='bars' permission={['TESTE']}/>
+                <MenuItem path='#app/empresas/add' label='Adicionar Notificação' icon='plus' permission={['TESTE']}/>
             </MenuTree>
-            <MenuTree label='Reclamações' icon='bullhorn' permission={[]}>
-                <MenuItem path='#app/empresas' label='Consultar Reclamações' icon='bars' permission={[]}/>
-                <MenuItem path='#app/empresas/add' label='Adicionar Reclamação' icon='plus' permission={[]}/>
+            <MenuTree label='Reclamações' icon='bullhorn' permission={['TESTE']}>
+                <MenuItem path='#app/empresas' label='Consultar Reclamações' icon='bars' permission={['TESTE']}/>
+                <MenuItem path='#app/empresas/add' label='Adicionar Reclamação' icon='plus' permission={['TESTE']}/>
             </MenuTree>
             <MenuTree label='Usuários' icon='users' permission={['Administrador']}>
                 <MenuItem path='#app/usuarios' label='Consultar Usuários' icon='bars' permission={['Administrador']}/>

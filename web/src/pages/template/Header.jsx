@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
-import {logout, getName } from "../../services/auth";
+import {logout, getUserData } from "../../services/auth";
 
 
 class Header extends Component{
@@ -11,7 +11,7 @@ class Header extends Component{
     }
 
     render (){
-        const userName = getName();
+        const userName = getUserData.name;
         return(
             <header className="main-header">
                 <nav className="navbar navbar-expand navbar-white navbar-light">

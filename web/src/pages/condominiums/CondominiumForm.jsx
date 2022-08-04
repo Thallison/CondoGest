@@ -9,15 +9,6 @@ import 'jquery-mask-plugin/dist/jquery.mask.min.js';
 import { showUpdate } from '../../redux/condominiums/action/condominiumsAction'
 import LabelAneInput from '../template/LabelAndInput'
 
-const renderTextArea = props => (
-    <div className='form-group col-xs-12 col-sm-12'>
-        <label>{props.label}</label>
-        <div>
-            <textarea className="form-control" rows="3" {...props.input} placeholder={props.placeholder} disabled={props.disabled} />
-        </div>
-    </div>
-);
-
 export class CondominiumForm extends Component {
     componentDidMount(){
 

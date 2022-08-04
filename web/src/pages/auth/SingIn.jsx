@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import api from "../../services/api";
-import { login, setPermissions } from "../../services/auth";
+import { login, setPermissions, setUserData } from "../../services/auth";
 
 class SignIn extends Component {
   state = {
@@ -12,11 +12,11 @@ class SignIn extends Component {
   };
 
   handleSignIn = async (e) => {
-    this.setState({ error: "" });
+    this.setState({ error: "" })
     e.preventDefault();
-    const { email, password } = this.state;
+    const { email, password } = this.state
     if (!email || !password) {
-      this.setState({ error: "Preencha e-mail e senha para continuar!" });
+      this.setState({ error: "Preencha e-mail e senha para continuar!" })
     } else {
       try {
         var responseAuth = await api
@@ -24,21 +24,22 @@ class SignIn extends Component {
           .then((resp) => resp)
           .catch((resp) => {
             if (typeof resp.response !== "undefined") {
-              throw new Error(resp.response.data.error.message);
+              throw new Error(resp.response.data.error.message)
             }
-            throw new Error("Houve um problema na conexão com o servidor");
+            throw new Error("Houve um problema na conexão com o servidor")
           });
-        login(responseAuth.data);
-        var response = await api.get(`users/${responseAuth.data.id}`);
-        setPermissions(response.data);
-        this.props.history.push("/app");
-        this.props.history.go(0);
+        login(responseAuth.data)
+        var response = await api.get(`users/${responseAuth.data.id}`)
+        setUserData(response.data)
+        setPermissions(response.data)
+        this.props.history.push("/app")
+        this.props.history.go(0)
       } catch (err) {
         this.setState({
           error: err.message
             ? err.message
             : "Houve um problema com o login, verifique suas credenciais."
-        });
+        })
       }
     }
   };

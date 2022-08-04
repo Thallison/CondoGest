@@ -3,15 +3,20 @@ import { withRouter } from "react-router-dom";
 import { reduxForm, Field } from "redux-form";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { getUserData, isAdmin } from "../../services/auth";
 
 import { showUpdate } from "../../redux/users/action/usersAction";
 import { getList } from "../../redux/permissions/action/rolesAction";
 import LabelAndInput from "../template/LabelAndInput";
+import { getList as getListCondominiums } from "../../redux/condominiums/action/condominiumsAction";
 
 export class UserForm extends Component {
   componentDidMount() {
     if (this.props.match.params.id)
       this.props.showUpdate(this.props.match.params.id);
+
+    this.props.getListCondominiums();
+    console.log()
   }
 
   renderSelectPerfil() {
@@ -21,11 +26,13 @@ export class UserForm extends Component {
       "Proprietário",
       "Morador"
     ];
+
     const options = permissionsList.map((e) => (
       <option key={e} value={e}>
         {e}
       </option>
     ));
+
     return options;
   }
 
@@ -40,12 +47,19 @@ export class UserForm extends Component {
 
   renderSelectStatus() {
     let statusList = ["Ativo", "Inativo", "Desabilitado"];
+
     const options = statusList.map((e) => (
       <option key={e} value={e}>
         {e}
       </option>
     ));
+
     return options;
+  }
+
+  renderSelectCondominiums() {
+    const options = this.props.listCondominiums.map((e) => (<option key={e.id} value={e.id}>{e.name}</option>))
+    return options
   }
 
   render() {
@@ -169,6 +183,28 @@ export class UserForm extends Component {
               placeholder="Informe o data de emissão"
               disabled={this.props.disabled}
             />
+
+            {isAdmin ? 
+              <div className="form-group col-xs-12 col-sm-4">
+                <label>Condomínio: </label>
+                <Field
+                  name="condominiumid"
+                  component="select"
+                  className="form-control"
+                  required={true}
+                  disabled={this.props.disabled}
+                >
+                  <option value="">Selecione um condomínio</option>
+                  {this.renderSelectCondominiums()}
+                </Field>
+              </div> : 
+              <Field
+                name="condominiumId"
+                component="text"
+                type="hidden"
+                value={getUserData.condominiumId}
+              />
+            }
           </div>
         </div>
         {button}
@@ -179,7 +215,6 @@ export class UserForm extends Component {
 
 UserForm = withRouter(UserForm);
 UserForm = reduxForm({ form: "userForm" })(UserForm);
-const mapStateToProps = (state) => ({ list: state.Roles.listRoles });
-const mapDispactchToProps = (dispatch) =>
-  bindActionCreators({ showUpdate, getList }, dispatch);
+const mapStateToProps = (state) => ({ list: state.Roles.listRoles, listCondominiums: state.Condominiums.listCondominiums });
+const mapDispactchToProps = (dispatch) => bindActionCreators({ showUpdate, getList, getListCondominiums }, dispatch);
 export default connect(mapStateToProps, mapDispactchToProps)(UserForm);

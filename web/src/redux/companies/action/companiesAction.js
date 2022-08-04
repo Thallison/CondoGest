@@ -8,9 +8,9 @@ export function  getList(status = null) {
 
     const request = api.get("companies", params)
     return {
-        type: 'COMPANY_FETCHED',
-        payload: request
-    }
+      type: "COMPANY_FETCHED",
+      payload: request
+    };
 }
 
 

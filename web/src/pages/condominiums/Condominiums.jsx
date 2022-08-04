@@ -126,7 +126,7 @@ export class Condominiums extends Component {
                         destroy={this.props.destroy}
                         setShowModalDelete={this.setShowModalDelete} />
                     : null}
-                <ContentHeader title='Consulta Contas' small='' />
+                <ContentHeader title='Consulta Condomínios' small='' />
                 <Content>
                     <div className="card-body">
                         <DataTableExtensions

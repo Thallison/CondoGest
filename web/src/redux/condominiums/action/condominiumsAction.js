@@ -3,9 +3,7 @@ import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 
 export function  getList(status = null) {
-
     const params = {params: {status: status}}
-
     const request = api.get("condominium", params)
     return {
         type: 'CONDOMINIUM_FETCHED',
@@ -13,9 +11,7 @@ export function  getList(status = null) {
     }
 }
 
-
 export function create(values){
-    console.log(values)
     return submit(values, 'post')
 }
 
@@ -25,7 +21,6 @@ export function update(values){
 
 function submit(values, method){
     const id = values.id ? values.id : ''
-    console.log(values)
     return dispatch => {
         api[method](`/condominium/${id}`, values)
             .then(resp => {
