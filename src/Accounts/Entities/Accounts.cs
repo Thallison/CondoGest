@@ -8,7 +8,7 @@ namespace Accounts.Entities
         public int Id { get; set; }
         public int CondominiumsId { get; set; }
         public string Name { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         public DateTime DueDate { get; set; }
         public DateTime? PayDay { get; set; }
         public string Description { get; set; }

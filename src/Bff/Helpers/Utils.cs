@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Bff.Helpers
 {
     public class Utils
@@ -14,12 +16,16 @@ namespace Bff.Helpers
 
         public static string formatPrice(string price)
         {
-            return string.Format("{0:N}", price);
+            NumberFormatInfo nfi = CultureInfo.CreateSpecificCulture("pt-BR").NumberFormat;
+            var d = Convert.ToDecimal(price)/100;
+            return d.ToString("N2", nfi);
         }
 
         public static string cleanPrice(string price)
         {
-            return string.Format("{0:000.0}", price);
+            NumberFormatInfo nfi = CultureInfo.CreateSpecificCulture("en-US").NumberFormat;
+            var d = Convert.ToDecimal(price);
+            return d.ToString("F2", nfi);
         }
 
     }

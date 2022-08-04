@@ -2,8 +2,8 @@ namespace Condominiums.Helpers.Enums
 {
     public enum CondominiumStatus
     {
-        Active = 1,
-        Inactive = 0,
-        Disable = 2
+        Inativo = 0,
+        Ativo = 1,
+        Desabilitado = 2
     }
 }

@@ -12,7 +12,7 @@ namespace Accounts.Dtos.Account
         public string Name { get; set; }
         
         [Required]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         
         [Required]
         public DateTime DueDate { get; set; }
