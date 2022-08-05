@@ -6,6 +6,9 @@ namespace Users.Dtos.Users
     public class RegisterRequest
     {
         [Required]
+        public int CondominiumsId { get; set; }
+        
+        [Required]
         public string Name { get; set; }
 
         [Required]

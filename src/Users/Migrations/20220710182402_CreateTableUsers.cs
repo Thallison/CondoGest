@@ -19,6 +19,7 @@ namespace Users.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CondominiumsId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "varchar(255)", nullable: false),
                     Email = table.Column<string>(type: "varchar(255)", nullable: false),
                     Password = table.Column<string>(type: "varchar(255)", nullable: false),
@@ -35,12 +36,27 @@ namespace Users.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
-                });
+                    table.ForeignKey(
+                        name: "FK_Users_Condominiums",
+                        column: x => x.CondominiumsId,
+                        principalTable: "Condominiums",
+                        principalColumn: "Id",
+                        onUpdate: ReferentialAction.Cascade,
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+            
+            migrationBuilder.CreateIndex(
+                name: "FK_Users_Condominiums_Idx",
+                table: "Users",
+                column: "CondominiumsId"
+            );
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { 
-                    "Id", 
+                    "Id",
+                    "CondominiumsId",
                     "Name", 
                     "Email", 
                     "Password", 
@@ -56,6 +72,7 @@ namespace Users.Migrations
                 },
                 values: new object[] { 
                     1L,
+                    '1',
                     "Admin",
                     "teste@gmail.com",
                     "$2a$10$K1wlBMyz/p6bsWhg2aZl8e2vmimvnZCReRX/GFSFJ5cOFV6KYT96K",

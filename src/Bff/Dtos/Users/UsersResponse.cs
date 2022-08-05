@@ -7,6 +7,8 @@ namespace Bff.Dtos.Users
     public class UsersResponse
     {
         public string Id { get; set; }
+        
+        public int CondominiumsId { get; set; }
 
         public string Name { get; set; }
 

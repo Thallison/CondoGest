@@ -26,6 +26,9 @@ namespace Users.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+                    
+                    b.Property<int>("CondominiumsId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Apartment")
                         .HasColumnType("int");
