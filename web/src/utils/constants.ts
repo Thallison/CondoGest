@@ -1,0 +1,1 @@
+export const KEY_AES = 'r7x!A%R*G-KaNdRc';
