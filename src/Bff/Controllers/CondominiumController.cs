@@ -39,16 +39,16 @@ namespace Bff.Controllers
         public async Task<IActionResult> GetAll()
         {
             var token = this.HttpContext.Request.Headers["Authorization"].ToString();
-            var account = await _condominiumService.GetAll(token);
-            return Ok(account);
+            var condominium = await _condominiumService.GetAll(token);
+            return Ok(condominium);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var token = this.HttpContext.Request.Headers["Authorization"].ToString();
-            var account = await _condominiumService.GetById(token, id);
-            return Ok(account);
+            var condominium = await _condominiumService.GetById(token, id);
+            return Ok(condominium);
         }
 
         [HttpDelete("{id}")]

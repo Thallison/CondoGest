@@ -9,6 +9,8 @@ namespace Bff.Dtos.Account
 {
     public class AccountResponse
     {
+        public string Id { get; set; }
+        
         [Required]
         public int CondominiumsId { get; set; }
         
