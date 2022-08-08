@@ -9,18 +9,30 @@ namespace Bff.Helpers
             return Convert.ToUInt64(cpf).ToString(@"000\.000\.000\-00");
         }
 
-        public static string FormatCNPJ(string CNPJ)
+        public static string FormatCnpj(string cnpj)
         {
-            return Convert.ToUInt64(CNPJ).ToString(@"00\.000\.000\/0000\-00");
+            if(!String.IsNullOrEmpty(cnpj)){
+                return Convert.ToUInt64(cnpj).ToString(@"00\.000\.000\/0000\-00");
+            }
+
+            return cnpj;
         }
-        public static string FormatPostalCode(string CNPJ)
+        public static string FormatPostalCode(string cep)
         {
-            return Convert.ToUInt64(CNPJ).ToString(@"000\.000\-00");
+            if(!String.IsNullOrEmpty(cep)){
+                return Convert.ToUInt64(cep).ToString(@"000\.000\-00");
+            }
+
+            return cep;
         }
 
-        public static string CleanStringOnlyNumber(String cpf)
+        public static string CleanStringOnlyNumber(String str)
         {
-            return System.Text.RegularExpressions.Regex.Replace(cpf, "[^a-z0-9_]+", "");
+            if(!String.IsNullOrEmpty(str)){
+                return System.Text.RegularExpressions.Regex.Replace(str, "[^a-z0-9_]+", "");
+            }
+
+            return str;
         }
 
         public static string FormatPrice(string price)

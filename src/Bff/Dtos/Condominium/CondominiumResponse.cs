@@ -6,6 +6,8 @@ namespace Bff.Dtos.Condominium
 {
     public class CondominiumResponse
     {
+        public string Id { get; set; }
+        
         [Required]
         public string Name { get; set; }
         
@@ -55,7 +57,7 @@ namespace Bff.Dtos.Condominium
 
             set 
             {
-                _cnpj = Utils.FormatCNPJ(value);
+                _cnpj = Utils.FormatCnpj(value);
             }
         }
 
