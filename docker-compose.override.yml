@@ -82,6 +82,16 @@ services:
         - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       restart: always
 
+    web:
+      stdin_open: true
+      volumes:
+        - .:/app
+      ports:
+        - '49168:80'
+      environment:
+        - NODE_ENV=development
+      restart: always
+
 volumes:
   db-volume:
         

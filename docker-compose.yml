@@ -40,3 +40,10 @@ services:
     build:
       context: .
       dockerfile: src/Bff/Dockerfile
+
+  web:
+    image: ${DOCKER_REGISTRY-}web
+    container_name: web
+    build:
+        context: .
+        dockerfile: web/Dockerfile
