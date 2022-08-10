@@ -42,6 +42,22 @@ namespace Bff.Dtos.Condominium
             }
         }
 
+        private string _cnpj;
+        
+        [Required]
+        public string Cnpj
+        {
+            get
+            {
+                return this._cnpj;
+            }
+
+            set 
+            {
+                _cnpj = Utils.CleanStringOnlyNumber(value);
+            }
+        }
+
         [Required]
         [EmailAddress(ErrorMessage = "Email in invalid format.")]
         public string Email { get; set; }

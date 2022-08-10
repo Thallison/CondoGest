@@ -6,7 +6,7 @@ export default props =>(
     <div className={`small-box bg-${props.color}`}>
         <div className="inner">
             <h2>{props.text}</h2>
-
+            { props.subtext ? <h4>{props.subtext}</h4> : '' }
             <p>{props.amount}</p>
         </div>
         <div className="icon">

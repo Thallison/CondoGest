@@ -16,7 +16,6 @@ export class UserForm extends Component {
       this.props.showUpdate(this.props.match.params.id);
 
     this.props.getListCondominiums();
-    console.log()
   }
 
   renderSelectPerfil() {
@@ -188,7 +187,7 @@ export class UserForm extends Component {
               <div className="form-group col-xs-12 col-sm-4">
                 <label>Condomínio: </label>
                 <Field
-                  name="condominiumid"
+                  name="condominiumsId"
                   component="select"
                   className="form-control"
                   required={true}
@@ -199,7 +198,7 @@ export class UserForm extends Component {
                 </Field>
               </div> : 
               <Field
-                name="condominiumId"
+                name="condominiumsId"
                 component="text"
                 type="hidden"
                 value={getUserData.condominiumId}

@@ -3,9 +3,7 @@ import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 
 export function  getList(status = null) {
-
     const params = {params: {status: status}}
-
     const request = api.get("account", params)
     return {
         type: 'ACCOUNT_FETCHED',
