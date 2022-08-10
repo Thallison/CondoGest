@@ -2,11 +2,9 @@ setup:
 build:
   docker:
     web: web/Dockerfile
-    accounts: src/Accounts/Dockerfile
-    users: src/Users/Dockerfile
 # release:
   # copy resources
   # skip in this example
-# run:
-  # startup script
+run:
+  web: npm run build && npm start
   # skip in this example
