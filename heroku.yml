@@ -1,0 +1,12 @@
+setup:
+build:
+  docker:
+    web: web/Dockerfile
+    accounts: src/Accounts/Dockerfile
+    users: src/Users/Dockerfile
+# release:
+  # copy resources
+  # skip in this example
+# run:
+  # startup script
+  # skip in this example
