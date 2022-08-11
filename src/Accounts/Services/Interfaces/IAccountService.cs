@@ -7,6 +7,7 @@ namespace Accounts.Services.Interfaces
     public interface IAccountService
     {
         public IEnumerable<Entities.Accounts> GetAll();
+        public IEnumerable<Entities.Accounts> GetAccountByCondominium(int condominiumsId);
         public Entities.Accounts GetById(int id);
         Task Create(RegisterRequest model);
         Task Update(int id, UpdateRequest model);

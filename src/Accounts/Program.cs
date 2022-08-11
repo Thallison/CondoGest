@@ -7,6 +7,17 @@ using Accounts.Middlewares;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
+string userApi = builder.Configuration.GetSection("UsersApi").Value;
+
+services.AddHttpClient<IUserService, UserService>(client =>
+{
+    client.BaseAddress = new Uri(userApi);
+    client.Timeout = TimeSpan.FromMinutes(5);
+}).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+{
+    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+});
+
 // Add services to the container.
 services.AddDbContext<ApplicationDbContext>();
 

@@ -3,6 +3,7 @@ using Users.Authorization;
 using Users.Dtos.Users;
 using Users.Services.Interfaces;
 using Users.Dtos.Authenticate;
+using Users.Helpers.Constants;
 
 namespace Users.Controllers
 {
@@ -38,7 +39,23 @@ namespace Users.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var users = _userService.GetAll();
+            IEnumerable<Entities.User> users;
+            
+            var user = (Entities.User)HttpContext.Items["User"];
+            if(user == null)
+            {
+                throw new Exception("User not found");
+            }
+            
+            if(user.Role == UserRoles.Admin )
+            {
+                users = _userService.GetAll();
+            }
+            else
+            {
+                users = _userService.GetUsersByCondominium(user.CondominiumsId);
+            }
+            
             return Ok(users);
         }
 
