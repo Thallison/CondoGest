@@ -42,9 +42,7 @@ export class Dashboard extends Component {
     const lastAccounts = accounts.filter((a) => ( 
             a.condominiumsId == getUserData.condominiumsId && 
             new Date(a.dueDate).getMonth() == currentMonth )
-        ).slice(0, 3); 
-        
-        console.log(lastAccounts[0])
+        ).slice(0, 3);
 
     return (
       <div>

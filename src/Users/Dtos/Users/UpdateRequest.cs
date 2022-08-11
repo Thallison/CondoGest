@@ -5,7 +5,10 @@ namespace Users.Dtos.Users
 {
     public class UpdateRequest
     {
-       [Required]
+        [Required]
+        public int CondominiumsId { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         public string? Password { get; set; }
