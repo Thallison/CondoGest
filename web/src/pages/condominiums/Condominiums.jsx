@@ -43,18 +43,18 @@ export class Condominiums extends Component {
                 sortable: true,
             },
             {
-                name: 'Valor',
-                selector: 'price',
+                name: 'CNPJ',
+                selector: 'cnpj',
+                sortable: true,
+            },
+            {
+                name: 'CEP',
+                selector: 'postalCode',
                 sortable: true,
             },
             {
                 name: 'Status',
                 selector: 'status',
-                sortable: true,
-            },
-            {
-                name: 'Vencimento',
-                selector: 'duedate',
                 sortable: true,
             },
             {
@@ -71,7 +71,7 @@ export class Condominiums extends Component {
                                 <button
                                     className="btn btn-info btn-sm"
                                     title="Visualizar"
-                                    onClick={() => this.props.history.push(`/app/normas/view/${record.id}`)}
+                                    onClick={() => this.props.history.push(`/app/condominios/view/${record.id}`)}
                                 >
                                     <i className="fa fa-eye"></i>
                                 </button>
@@ -80,7 +80,7 @@ export class Condominiums extends Component {
                                 <button
                                     className="btn btn-warning btn-sm"
                                     title="Editar"
-                                    onClick={() => this.props.history.push(`/app/normas/edit/${record.id}`)}
+                                    onClick={() => this.props.history.push(`/app/condominios/edit/${record.id}`)}
                                 >
                                     <i className="fa fa-pen"></i>
                                 </button>

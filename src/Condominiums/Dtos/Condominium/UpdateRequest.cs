@@ -30,6 +30,9 @@ namespace Condominiums.Dtos.Condominium
         public string PostalCode { get; set; }
 
         [Required]
+        public string Cnpj { get; set; }
+
+        [Required]
         [EmailAddress(ErrorMessage = "Email in invalid format.")]
         public string Email { get; set; }
 

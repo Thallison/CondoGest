@@ -118,15 +118,11 @@ export class Users extends Component {
                               className="btn btn-primary btn-sm"
                               title="Ativar"
                               onClick={() => {
-                                console.log()
-
                                 this.props.update({
                                   ...record,
                                   status: 1
                                 })
-                              }
-                                
-                              }
+                              }}
                             >
                               <i className="fa fa-check"></i>
                             </button>

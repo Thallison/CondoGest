@@ -23,7 +23,6 @@ export class Accounts extends Component {
         this.setShowModalDelete = this.setShowModalDelete.bind(this);
     }
 
-
     setShowModalDelete(bool, idDelete = null) {
         this.setState({
             showModalDelete: bool,
@@ -54,7 +53,7 @@ export class Accounts extends Component {
             },
             {
                 name: 'Vencimento',
-                selector: 'duedate',
+                selector: 'dueDate',
                 sortable: true,
             },
             {
@@ -71,7 +70,7 @@ export class Accounts extends Component {
                                 <button
                                     className="btn btn-info btn-sm"
                                     title="Visualizar"
-                                    onClick={() => this.props.history.push(`/app/normas/view/${record.id}`)}
+                                    onClick={() => this.props.history.push(`/app/contas/view/${record.id}`)}
                                 >
                                     <i className="fa fa-eye"></i>
                                 </button>
@@ -80,7 +79,7 @@ export class Accounts extends Component {
                                 <button
                                     className="btn btn-warning btn-sm"
                                     title="Editar"
-                                    onClick={() => this.props.history.push(`/app/normas/edit/${record.id}`)}
+                                    onClick={() => this.props.history.push(`/app/contas/edit/${record.id}`)}
                                 >
                                     <i className="fa fa-pen"></i>
                                 </button>
