@@ -2,6 +2,7 @@ using AutoMapper;
 using Accounts.Dtos.Account;
 using Accounts.Helpers;
 using Accounts.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Accounts.Services
 {
@@ -21,6 +22,11 @@ namespace Accounts.Services
         public IEnumerable<Entities.Accounts> GetAll()
         {
             return _context.Accounts;
+        }
+
+        public IEnumerable<Entities.Accounts> GetAccountByCondominium(int condominiumsId)
+        {
+            return _context.Accounts.Where(x => x.CondominiumsId == condominiumsId);
         }
 
         public Entities.Accounts GetById(int id)

@@ -4,6 +4,7 @@ using Users.Dtos.Authenticate;
 using Users.Dtos.Users;
 using Users.Helpers;
 using Users.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Users.Services
 {
@@ -43,6 +44,11 @@ namespace Users.Services
         public IEnumerable<Entities.User> GetAll()
         {
             return _context.Users;
+        }
+
+        public IEnumerable<Entities.User> GetUsersByCondominium(int condominiumsId)
+        {
+            return _context.Users.Where(x => x.CondominiumsId == condominiumsId);
         }
 
         public Entities.User GetById(int id)

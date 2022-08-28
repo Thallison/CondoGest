@@ -7,6 +7,7 @@ namespace Users.Services.Interfaces
     {
         public AuthenticateResponse Authenticate(AuthenticateRequest model);
         public IEnumerable<Entities.User> GetAll();
+        public IEnumerable<Entities.User> GetUsersByCondominium(int condominiumsId);
         public Entities.User GetById(int id);
         Task Create(RegisterRequest model);
         Task Update(int id, UpdateRequest model);
