@@ -10,7 +10,6 @@ import Grid from "../template/Grid";
 
 import { getInspection } from "../../redux/inspection/action/inspectionAction";
 import { getList } from "../../redux/inspection/action/inspectionFilesAction";
-import { SRLWrapper } from "simple-react-lightbox";
 
 const Row = (props) => {
   var textcolor, textlabel;
@@ -226,17 +225,6 @@ export class InspectionView extends Component {
             {(typeof this.props.evidences !== "undefined" && this.props.evidences.length > 0) ? 
             <h5 className="navbar navbar-dark bg-secondary text-uppercase font-weight-bold mt-3">Evidências</h5> : 
             null}
-            <SRLWrapper
-              options={{
-                buttons: {
-                  showDownloadButton: false,
-                },
-              }}
-            >
-              <div id="content-page-one" className="content">
-                <div className="row">{this.renderEvidences()}</div>
-              </div>
-            </SRLWrapper>
           </div>
         </Content>
       </div>

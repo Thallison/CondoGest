@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { applyMiddleware, createStore } from 'redux'
 import App from './App';
 import { Provider } from 'react-redux';
-import SimpleReactLightbox from 'simple-react-lightbox'
 
 import promise from 'redux-promise'
 import multi from 'redux-multi'
@@ -17,8 +16,6 @@ const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
 const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers, devTools);
 ReactDOM.render(
     <Provider store={store}>
-        <SimpleReactLightbox>
-            <App />
-        </SimpleReactLightbox>
+        <App />
     </Provider>
 , document.getElementById('root'));
