@@ -25,27 +25,34 @@ export class Dashboard extends Component {
     const dashboard = this.props.list?.dashboard
       ? this.props.list.dashboard
       : [];
-    
-      
+
     const condominiums = this.props.listCondominiums
       ? this.props.listCondominiums
       : [];
 
-    const condominioName = condominiums.find((c) => c.id == getUserData.condominiumsId)?.name;
-    
-    const accounts = this.props.listAccounts
-      ? this.props.listAccounts
-      : [];
+    const condominioName = condominiums.find(
+      (c) => c.id == getUserData.condominiumsId
+    )?.name;
+
+    const accounts = this.props.listAccounts ? this.props.listAccounts : [];
 
     const currentMonth = new Date().getMonth();
 
-    const lastAccounts = accounts.filter((a) => ( 
-            a.condominiumsId == getUserData.condominiumsId && 
-            new Date(a.dueDate).getMonth() == currentMonth )
-        ).slice(0, 3); 
-        
-        console.log(lastAccounts[0])
+    const myAccounts =  accounts
+    .filter(
+      (a) =>
+        a.condominiumsId == getUserData.condominiumsId &&
+        new Date(a.dueDate).getMonth() == currentMonth
+    );
 
+    const lastAccounts = myAccounts.slice(0, 3);
+
+    const allPrices = myAccounts.map((el) => {
+      return Number(el.price.split('.').join('').split(',').join('.'));
+    });
+
+    const total = allPrices.reduce((a, b) => a + b, 0)
+  
     return (
       <div>
         <ContentHeader title="Home" small="Dashboard" />
@@ -66,8 +73,17 @@ export class Dashboard extends Component {
               ) : (
                 <Card
                   color="default"
-                  amount={ lastAccounts !== "" ? lastAccounts.map((l) => l.name + ": R$ " + l.price ) : "Sem contas" }
-                  subtext={new Date().toLocaleString('default', { month: 'long', year: 'numeric'})}
+                  amount={
+                    lastAccounts !== ""
+                      ? lastAccounts.map(
+                          (l) => l.name + ": R$ " + l.price
+                        )
+                      : "Sem contas"
+                  }
+                  subtext={new Date().toLocaleString("default", {
+                    month: "long",
+                    year: "numeric"
+                  })}
                   text={"Condomínio " + condominioName}
                   icon="building"
                 />
@@ -76,15 +92,17 @@ export class Dashboard extends Component {
               <Card
                 color="default"
                 amount={
-                  typeof dashboard[dashboard.length - 1] !== "undefined"
-                    ? dashboard[dashboard.length - 1].finalizada
-                    : 0
+                  `Valor total: ${total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`
                 }
-                text="Saldo fundo de caixa"
+                subtext={new Date().toLocaleString("default", {
+                  month: "long",
+                  year: "numeric"
+                })}
+                text="Contas"
                 icon="dollar-sign"
               />
 
-              <Card
+              {/* <Card
                 color="default"
                 amount={
                   typeof dashboard[dashboard.length - 1] !== "undefined"
@@ -93,7 +111,7 @@ export class Dashboard extends Component {
                 }
                 text="Prestação de contas"
                 icon="clipboard-check"
-              />
+              /> */}
 
               {/* <Grid cols="12 12 12 6">
                                 <div className={`small-box bg-danger`}>
@@ -133,5 +151,8 @@ const mapStateToProps = (state) => ({
   listAccounts: state.Accounts.listAccounts
 });
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ getList, getListCondominiums, getListAccounts }, dispatch);
+  bindActionCreators(
+    { getList, getListCondominiums, getListAccounts },
+    dispatch
+  );
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

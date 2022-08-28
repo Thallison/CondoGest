@@ -96,3 +96,7 @@ body,
   text-align: center;
   background-color: #f4f6f9;
 }
+
+.sub-title::first-letter{
+  text-transform: capitalize;
+}
