@@ -67,7 +67,7 @@ export class Condominiums extends Component {
                 cell: record => {
                     return (
                         <Fragment>
-                            <Authorization permission={['Administrador']}>
+                            <Authorization permission={['Administrador', 'Síndico']}>
                                 <button
                                     className="btn btn-info btn-sm"
                                     title="Visualizar"

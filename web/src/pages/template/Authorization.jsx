@@ -5,8 +5,8 @@ export default props => {
     let permissions = userGetPermission()
     permissions = typeof permissions !== 'undefined' ? permissions : []
 
-    if(props.permission){
-        if (permissions.includes(props.permission)){
+    if(props.permission){        
+        if (props.permission.includes(permissions)){
             return <>{props.children}</>
         } else {
             return <></>

@@ -72,7 +72,7 @@ export class Users extends Component {
                 cell: record => {
                     return (
                       <Fragment>
-                        <Authorization permission={['Administrador']}>
+                        <Authorization permission={['Administrador', 'Síndico', 'Proprietário', 'Morador']}>
                           <button
                             className="btn btn-info btn-sm"
                             title="Visualizar"
@@ -85,7 +85,7 @@ export class Users extends Component {
                             <i className="fa fa-eye"></i>
                           </button>
                         </Authorization>
-                        <Authorization permission={['Administrador']}>
+                        <Authorization permission={['Administrador', 'Síndico']}>
                           <button
                             className="btn btn-warning btn-sm"
                             title="Editar"
@@ -99,7 +99,7 @@ export class Users extends Component {
                           </button>
                         </Authorization>
                         {record.status !== "Inativo" && record.id !== getUserData.id ? (
-                          <Authorization permission={['Administrador']}>
+                          <Authorization permission={['Administrador', 'Síndico']}>
                             <button
                               className="btn btn-danger btn-sm"
                               title="Excluir"

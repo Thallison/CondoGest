@@ -126,25 +126,25 @@ const Routes = () => (
       <PrivateRoute
         exact
         path="/app/condominios"
-        permission={["Administrador"]}
+        permission={['Administrador', 'Síndico']}
         component={() => <Condominiums />}
       />
       <PrivateRoute
         exact
         path="/app/condominios/add"
-        permission={["Administrador"]}
+        permission={['Administrador']}
         component={() => <CondominiumRegister type="create" />}
       />
       <PrivateRoute
         exact
         path="/app/condominios/edit/:id"
-        permission={["Administrador"]}
+        permission={['Administrador']}
         component={() => <CondominiumRegister type="edit" />}
       />
       <PrivateRoute
         exact
         path="/app/condominios/view/:id"
-        permission={["Administrador"]}
+        permission={['Administrador', 'Síndico']}
         component={() => <CondominiumRegister type="view" />}
       />
 

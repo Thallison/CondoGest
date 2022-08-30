@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/crypto-js": "^4.1.1",
     "admin-lte": "^3.0.5",
     "axios": "^0.20.0",
     "browser-image-compression": "^1.0.14",
@@ -27,7 +28,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-router-redux": "^4.0.8",
-    "react-scripts": "3.4.3",
+    "react-scripts": "5.0.1",
     "react-select": "^4.1.0",
     "redux": "^4.0.5",
     "redux-form": "^8.3.6",
@@ -59,8 +60,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/crypto-js": "^4.1.1"
   }
 }
