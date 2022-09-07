@@ -12,5 +12,6 @@ namespace Users.Services.Interfaces
         Task Create(RegisterRequest model);
         Task Update(int id, UpdateRequest model);
         Task Delete(int id);
+        public IEnumerable<Entities.User> GetUsersById(int id);
     }
 }

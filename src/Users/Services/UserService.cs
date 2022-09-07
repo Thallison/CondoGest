@@ -50,6 +50,10 @@ namespace Users.Services
         {
             return _context.Users.Where(x => x.CondominiumsId == condominiumsId);
         }
+        public IEnumerable<Entities.User> GetUsersById(int id)
+        {
+            return _context.Users.Where(x => x.Id == id);
+        }
 
         public Entities.User GetById(int id)
         {

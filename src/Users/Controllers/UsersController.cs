@@ -62,6 +62,10 @@ namespace Users.Controllers
             {
                 users = _userService.GetAll();
             }
+            else if(user.Role == UserRoles.Restrict || user.Role == UserRoles.Public)
+            {
+                users = _userService.GetUsersById(user.Id);
+            }
             else
             {
                 users = _userService.GetUsersByCondominium(user.CondominiumsId);
