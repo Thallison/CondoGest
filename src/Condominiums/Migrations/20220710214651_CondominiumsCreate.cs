@@ -37,6 +37,41 @@ namespace Condominiums.Migrations
                     table.PrimaryKey("PK_Condominiums", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "Condominiums",
+                columns: new[] { 
+                    "Id",
+                    "Name", 
+                    "CorporateName", 
+                    "Address", 
+                    "Number", 
+                    "District", 
+                    "City", 
+                    "State", 
+                    "PostalCode", 
+                    "Cnpj", 
+                    "Email", 
+                    "Status",
+                    "CreatedAt", 
+                    "UpdatedAt" 
+                },
+                values: new object[] { 
+                    1L,
+                    "Condominio Admin",
+                    "Condominio Admin Corporate",
+                    "Rua Admin",
+                    "123",
+                    "Centro",
+                    "Belo Horizonte",
+                    "MG",
+                    "32050222",
+                    "16594596000135",
+                    "condominioadmin@gmail.com",
+                    "1",
+                    new DateTime(2022, 5, 09, 12, 0, 0, 0, DateTimeKind.Local),
+                    null
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

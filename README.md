@@ -1,3 +1,5 @@
+docker compose up --build -d
+
 docker build -f DockerfileHeroku .
 
 heroku login

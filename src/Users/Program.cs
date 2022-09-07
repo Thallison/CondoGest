@@ -4,6 +4,7 @@ using Users.Services;
 using System.Text.Json.Serialization;
 using Users.Authorization;
 using Users.Middlewares;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -37,6 +38,13 @@ services.AddScoped<IJwtUtils, JwtUtils>();
 services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
+
+// migrate any database changes on startup (includes initial db creation)
+using (var scope = app.Services.CreateScope())
+{
+    var dataContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    dataContext.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 {
