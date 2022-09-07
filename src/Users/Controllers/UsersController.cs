@@ -32,6 +32,17 @@ namespace Users.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(RegisterRequest model)
         {
+            var user = (Entities.User)HttpContext.Items["User"];
+            if(user == null)
+            {
+                throw new Exception("User not found");
+            }
+            
+            if(model.CondominiumsId == null)
+            {
+                model.CondominiumsId = user.CondominiumsId;
+            }
+
             await _userService.Create(model);
             return Ok(new { message = "Registration successful" });
         }
