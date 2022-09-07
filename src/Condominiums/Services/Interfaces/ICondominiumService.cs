@@ -11,5 +11,6 @@ namespace Condominiums.Services.Interfaces
         Task Create(RegisterRequest model);
         Task Update(int id, UpdateRequest model);
         Task Delete(int id);
+        public IEnumerable<Entities.Condominiums> GetCondominiumsById(int condominiumsId);
     }
 }

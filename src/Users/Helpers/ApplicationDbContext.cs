@@ -15,8 +15,6 @@ namespace Users.Helpers
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            var serverVersion = new MySqlServerVersion(new Version(8, 0, 22));
-
             string mySqlConnectionStr = _configuration.GetConnectionString("DefaultConnection");
             options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr))
             .LogTo(Console.WriteLine, LogLevel.Information)

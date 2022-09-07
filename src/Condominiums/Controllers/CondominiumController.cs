@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Condominiums.Helpers.Enums;
 using Condominiums.Dtos.Condominium;
 using Condominiums.Services.Interfaces;
-
+using Condominiums.Helpers.Constants;
 namespace Condominiums.Controllers
 {
     [Authorize]
@@ -12,11 +12,13 @@ namespace Condominiums.Controllers
     {
         private readonly ILogger<CondominiumController> _logger;
         private ICondominiumService _condominiumService;
+        private IUserService _userService;
 
-        public CondominiumController(ILogger<CondominiumController> logger, ICondominiumService condominiumService)
+        public CondominiumController(ILogger<CondominiumController> logger, ICondominiumService condominiumService, IUserService userService)
         {
             _logger = logger;
             _condominiumService = condominiumService;
+            _userService = userService;
         }
 
         [HttpPost]
@@ -34,10 +36,23 @@ namespace Condominiums.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var account = _condominiumService.GetAll();
-            return Ok(account);
+            IEnumerable<Entities.Condominiums> condominium;
+            var token = this.HttpContext.Request.Headers["Authorization"].ToString();
+            var userId = (int)HttpContext.Items["userId"];
+            var user = await _userService.GetById(token, userId);
+
+            if (user.Role == UserRoles.Admin)
+            {
+                condominium = _condominiumService.GetAll();
+            }
+            else
+            {
+                condominium = _condominiumService.GetCondominiumsById(user.CondominiumsId);
+            }
+            
+            return Ok(condominium);
         }
 
         [HttpGet("{id}")]

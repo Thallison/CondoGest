@@ -22,6 +22,11 @@ namespace Condominiums.Services
         {
             return _context.Condominiums;
         }
+        
+        public IEnumerable<Entities.Condominiums> GetCondominiumsById(int condominiumsId)
+        {
+            return _context.Condominiums.Where(x => x.Id == condominiumsId);
+        }
 
         public Entities.Condominiums GetById(int id)
         {

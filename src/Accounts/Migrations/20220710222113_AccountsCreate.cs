@@ -25,7 +25,7 @@ namespace Accounts.Migrations
                     PayDay = table.Column<DateTime>(type: "datetime", nullable: true),
                     Description = table.Column<string>(type: "mediumtext", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    Observation = table.Column<string>(type: "mediumtext", nullable: false),
+                    Observation = table.Column<string>(type: "mediumtext", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
@@ -47,6 +47,35 @@ namespace Accounts.Migrations
                 table: "Accounts",
                 column: "CondominiumsId"
             );
+
+             migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { 
+                    "Id",
+                    "CondominiumsId", 
+                    "Name", 
+                    "Price", 
+                    "DueDate", 
+                    "PayDay", 
+                    "Description", 
+                    "Status", 
+                    "Observation", 
+                    "CreatedAt", 
+                    "UpdatedAt" 
+                },
+                values: new object[] { 
+                    1L,
+                    1,
+                    "Conta Condominio Admin",
+                    "100",
+                    new DateTime(2022, 5, 09, 12, 0, 0, 0, DateTimeKind.Local),
+                    new DateTime(2022, 6, 09, 12, 0, 0, 0, DateTimeKind.Local),
+                    "Conta teste",
+                    "1",
+                    null,
+                    new DateTime(2022, 5, 09, 12, 0, 0, 0, DateTimeKind.Local),
+                    null
+                });
 
         }
 
