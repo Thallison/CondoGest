@@ -2,7 +2,7 @@ import axios from "axios";
 import { getToken } from "./auth";
 
 const api = axios.create({
-  baseURL: "https://condogest-bff.herokuapp.com/"
+  baseURL: "http://host.docker.internal:49166/"
 });
 
 api.interceptors.request.use(async config => {

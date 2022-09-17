@@ -1,0 +1,1238 @@
+{
+	"info": {
+		"_postman_id": "2dd7a17e-0c5e-4af5-bf4f-359252024ad0",
+		"name": "CondoGest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11372363"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Admin\",\r\n    \"Email\" : \"teste1@gmail.com\",\r\n    \"Password\" : \"Pa$$w0rd\",\r\n    \"Role\" : \"Sindico\",\r\n    \"Status\" : \"Active\",\r\n    \"Cpf\" : \"123456\",\r\n    \"Rg\" : \"MG 022\",\r\n    \"DispatchingAgency\" : \"SSP\",\r\n    \"IssueDate\" : \"2018-03-29\",\r\n    \"Apartment\" : \"102\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5145/Users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Thalin\",\r\n    \"Password\" : \"Pa$$w0rd\",\r\n    \"Role\" : \"Sindico\",\r\n    \"Status\" : \"Active\",\r\n    \"Cpf\" : \"123456\",\r\n    \"Rg\" : \"MG 022\",\r\n    \"DispatchingAgency\" : \"SSP\",\r\n    \"IssueDate\" : \"2018-03-29\",\r\n    \"Apartment\" : \"102\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5145/Users/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"Users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/Users/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"Users",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get User by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/Users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"Users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get User all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5145/Users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5145",
+							"path": [
+								"Users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bff",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json()\r",
+											"pm.environment.set('token_portal', response.token)\r",
+											"pm.globals.set(\"token_portal\", response.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"teste@gmail.com\",\r\n    \"password\" : \"Pa$$w0rd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49166/users/auth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49166",
+									"path": [
+										"users",
+										"auth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5243/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5243",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get by Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5243/Users/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5243",
+									"path": [
+										"Users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Name\" : \"Thalin\",\r\n    \"Email\" : \"teste4b@gmail.com\",\r\n    \"Password\" : \"Pa$$w0rd\",\r\n    \"Role\" : \"Sindico\",\r\n    \"Status\" : \"Ativo\",\r\n    \"Cpf\" : \"109.024.956-07\",\r\n    \"Rg\" : \"MG 022\",\r\n    \"DispatchingAgency\" : \"SSP\",\r\n    \"IssueDate\" : \"2018-03-29\",\r\n    \"Apartment\" : \"102\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:49166/Users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "49166",
+									"path": [
+										"Users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Condominium",
+					"item": [
+						{
+							"name": "get all Condominium",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5243/Condominium",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5243",
+									"path": [
+										"Condominium"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get by Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5243/Condominium/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5243",
+									"path": [
+										"Condominium",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Condominium",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"name\":\"adsfasdf\",\r\n\t\"corporatename\":\"asdfafasdf\",\r\n\t\"cnpj\":\"75.365.365/4634-57\",\r\n\t\"email\":\"wandersonmg18@gmail.com\",\r\n\t\"city\":\"Contagem\",\r\n\t\"state\":\"MG\",\r\n\t\"postalcode\":\"321.874-00\",\r\n\t\"status\":\"Ativo\",\r\n\t\"address\":\"Rua Prelúdio\",\r\n\t\"number\":\"59\",\r\n\t\"district\":\"ttwertwret\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5243/Condominium",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5243",
+									"path": [
+										"Condominium"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Condominium",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"1\",\r\n    \"name\": \"Sem Condomínio\",\r\n    \"corporateName\": \"asdfafasdf\",\r\n    \"address\": \"Rua Prelúdio\",\r\n    \"number\": \"59\",\r\n    \"district\": \"ttwertwret\",\r\n    \"city\": \"Contagem\",\r\n    \"state\": \"MG\",\r\n    \"postalCode\": \"563.563-56\",\r\n    \"cnpj\": \"45.365.365/4634-56\",\r\n    \"email\": \"wandersonmg18@gmail.com\",\r\n    \"status\": \"1\",\r\n    \"corporatename\": \"asdfafasdf\",\r\n    \"postalcode\": \"523.452-43\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5243/Condominium/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5243",
+									"path": [
+										"Condominium",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Account",
+					"item": [
+						{
+							"name": "get all Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5243/Account",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5243",
+									"path": [
+										"Account"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get by Id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5243/Account/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5243",
+									"path": [
+										"Account",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token_portal}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"CondominiumsId\" : 1,\r\n    \"Name\" : \"Teste Conta\",\r\n    \"Price\" : \"1.000,95\",\r\n    \"DueDate\" : \"2022-07-20\",\r\n    \"PayDay\" : \"2022-07-21\",\r\n    \"Description\" : \"Teste cadastro conta\",\r\n    \"Status\" : 1,\r\n    \"Observation\" : \"Observação cadastro conta\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5243/Account",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5243",
+									"path": [
+										"Account"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Condominiums",
+			"item": [
+				{
+					"name": "Create Condominium",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"adsfasdf\",\r\n\t\"corporatename\":\"asdfafasdf\",\r\n\t\"cnpj\":\"65365365463457\",\r\n\t\"email\":\"wandersonmg18@gmail.com\",\r\n\t\"city\":\"Contagem\",\r\n\t\"state\":\"MG\",\r\n\t\"postalcode\":\"32187400\",\r\n\t\"status\":\"Ativo\",\r\n\t\"address\":\"Rua Prelúdio\",\r\n\t\"number\":\"59\",\r\n\t\"district\":\"ttwertwret\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5239/Condominium",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5239",
+							"path": [
+								"Condominium"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Condominium",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Condominio Teste 2\",\r\n    \"CorporateName\" : \" Corporate\",\r\n    \"Address\" : \"Rua teste\",\r\n    \"Number\" : \"123\",\r\n    \"District\" : \"Centro\",\r\n    \"City\" : \"Belo Horizonte\",\r\n    \"State\" : \"Minas Gerais\",\r\n    \"PostalCode\" : \"36040222\",\r\n    \"Cnpj\" : \"1236\",\r\n    \"Email\" : \"Condominio@gmail.com\",\r\n    \"Status\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5239/Condominium/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5239",
+							"path": [
+								"Condominium",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Condominium ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5239/Condominium/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5239",
+							"path": [
+								"Condominium",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  Condominium all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49162/Condominium",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49162",
+							"path": [
+								"Condominium"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete  Condominium",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5239/Condominium/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5239",
+							"path": [
+								"Condominium",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Create Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CondominiumsId\" : 2,\r\n    \"Name\" : \"Teste Conta\",\r\n    \"Price\" : \"10.95\",\r\n    \"DueDate\" : \"2022-07-20\",\r\n    \"PayDay\" : \"2022-07-21\",\r\n    \"Description\" : \"Teste cadastro conta\",\r\n    \"Status\" : 1,\r\n    \"Observation\" : \"Observação cadastro conta\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5153/Account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5153",
+							"path": [
+								"Account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\" : \"Teste Conta\",\r\n    \"Price\" : \"10.95\",\r\n    \"DueDate\" : \"2022-07-20\",\r\n    \"PayDay\" : \"2022-07-21\",\r\n    \"Description\" : \"Teste cadastro conta\",\r\n    \"Status\" : 2,\r\n    \"Observation\" : \"Observação cadastro conta\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5153/Account/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5153",
+							"path": [
+								"Account",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Account ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49164/Account/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49164",
+							"path": [
+								"Account",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_portal}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5153/Account/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5153",
+							"path": [
+								"Account",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Heroku",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"pm.environment.set('token_portal', response.token)\r",
+									"pm.globals.set(\"token_portal\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"teste@gmail.com\",\r\n    \"password\" : \"Pa$$w0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://condogest-users.herokuapp.com/Users/login",
+							"protocol": "https",
+							"host": [
+								"condogest-users",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  Account all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJyb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTY2MTMwNzY3NCwiZXhwIjoxNjYxOTEyNDc0LCJpYXQiOjE2NjEzMDc2NzR9.VwOO5IE7SkgB02se1cTu0qeXFXO5HI7Vvgw9w2Ivw4o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://condogest-accounts.herokuapp.com/Account",
+							"protocol": "https",
+							"host": [
+								"condogest-accounts",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
