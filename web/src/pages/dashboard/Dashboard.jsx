@@ -42,7 +42,7 @@ export class Dashboard extends Component {
     .filter(
       (a) =>
         a.condominiumsId == getUserData.condominiumsId &&
-        new Date(a.dueDate).getMonth() == currentMonth
+        new Date(a.dueDate).getMonth() == currentMonth && a.status == "Ativo"
     );
 
     const lastAccounts = myAccounts.slice(0, 3);

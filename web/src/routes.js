@@ -89,7 +89,7 @@ const Routes = () => (
       <PrivateRoute
         exact
         path="/app/usuarios/view/:id"
-        permission={['Administrador', 'Síndico']}
+        permission={['Administrador', 'Síndico', 'Proprietário', 'Morador']}
         component={() => <UserRegister type="view" />}
       />
       <PrivateRoute
