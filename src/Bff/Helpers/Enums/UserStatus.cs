@@ -4,6 +4,6 @@ namespace Bff.Helpers.Enums
     {
         Inativo = 0,
         Ativo = 1,
-        Disabilitado = 2
+        Desabilitado = 2
     }
 }

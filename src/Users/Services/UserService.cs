@@ -3,6 +3,7 @@ using Users.Authorization;
 using Users.Dtos.Authenticate;
 using Users.Dtos.Users;
 using Users.Helpers;
+using Users.Helpers.Enums;
 using Users.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,6 +34,11 @@ namespace Users.Services
             if (userFind == null || !BCrypt.Net.BCrypt.Verify(model.Password, userFind.Password))
             {
                 throw new AppException("Username or password is incorrect");
+            }
+
+            if(userFind.Status != UserStatus.Ativo)
+            {
+                throw new AppException("Access denied! Contact to administrator");
             }
 
             // authentication successful
