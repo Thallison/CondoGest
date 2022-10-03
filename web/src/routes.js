@@ -107,13 +107,13 @@ const Routes = () => (
       <PrivateRoute
         exact
         path="/app/contas/add"
-        permission={['Síndico']}
+        permission={['Administrador','Síndico']}
         component={() => <AccountRegister type="create" />}
       />
       <PrivateRoute
         exact
         path="/app/contas/edit/:id"
-        permission={['Síndico']}
+        permission={['Administrador','Síndico']}
         component={() => <AccountRegister type="edit" />}
       />
       <PrivateRoute
